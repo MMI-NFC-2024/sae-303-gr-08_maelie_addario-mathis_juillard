@@ -1,0 +1,608 @@
+[
+  {
+    "code_dept": "01",
+    "pop_totale": 688626,
+    "pop_65plus": 130839,
+    "pct65": 0.19
+  },
+  {
+    "code_dept": "02",
+    "pop_totale": 518817,
+    "pop_65plus": 118809,
+    "pct65": 0.229
+  },
+  {
+    "code_dept": "03",
+    "pop_totale": 332599,
+    "pop_65plus": 100112,
+    "pct65": 0.301
+  },
+  {
+    "code_dept": "04",
+    "pop_totale": 169806,
+    "pop_65plus": 49923,
+    "pct65": 0.294
+  },
+  {
+    "code_dept": "05",
+    "pop_totale": 142006,
+    "pop_65plus": 41608,
+    "pct65": 0.293
+  },
+  {
+    "code_dept": "06",
+    "pop_totale": 1129950,
+    "pop_65plus": 290397,
+    "pct65": 0.257
+  },
+  {
+    "code_dept": "07",
+    "pop_totale": 336947,
+    "pop_65plus": 93671,
+    "pct65": 0.278
+  },
+  {
+    "code_dept": "08",
+    "pop_totale": 263194,
+    "pop_65plus": 64746,
+    "pct65": 0.246
+  },
+  {
+    "code_dept": "09",
+    "pop_totale": 156787,
+    "pop_65plus": 45311,
+    "pct65": 0.289
+  },
+  {
+    "code_dept": "10",
+    "pop_totale": 310930,
+    "pop_65plus": 71825,
+    "pct65": 0.231
+  },
+  {
+    "code_dept": "11",
+    "pop_totale": 379729,
+    "pop_65plus": 110501,
+    "pct65": 0.291
+  },
+  {
+    "code_dept": "12",
+    "pop_totale": 278355,
+    "pop_65plus": 82393,
+    "pct65": 0.296
+  },
+  {
+    "code_dept": "13",
+    "pop_totale": 2090225,
+    "pop_65plus": 453579,
+    "pct65": 0.217
+  },
+  {
+    "code_dept": "14",
+    "pop_totale": 711029,
+    "pop_65plus": 169936,
+    "pct65": 0.239
+  },
+  {
+    "code_dept": "15",
+    "pop_totale": 143746,
+    "pop_65plus": 45567,
+    "pct65": 0.317
+  },
+  {
+    "code_dept": "16",
+    "pop_totale": 350209,
+    "pop_65plus": 98409,
+    "pct65": 0.281
+  },
+  {
+    "code_dept": "17",
+    "pop_totale": 681666,
+    "pop_65plus": 210635,
+    "pct65": 0.309
+  },
+  {
+    "code_dept": "18",
+    "pop_totale": 295830,
+    "pop_65plus": 82832,
+    "pct65": 0.28
+  },
+  {
+    "code_dept": "19",
+    "pop_totale": 239483,
+    "pop_65plus": 72563,
+    "pct65": 0.303
+  },
+  {
+    "code_dept": "2A",
+    "pop_totale": 172719,
+    "pop_65plus": 43352,
+    "pct65": 0.251
+  },
+  {
+    "code_dept": "2B",
+    "pop_totale": 187443,
+    "pop_65plus": 48548,
+    "pct65": 0.259
+  },
+  {
+    "code_dept": "21",
+    "pop_totale": 538799,
+    "pop_65plus": 121230,
+    "pct65": 0.225
+  },
+  {
+    "code_dept": "22",
+    "pop_totale": 615301,
+    "pop_65plus": 176591,
+    "pct65": 0.287
+  },
+  {
+    "code_dept": "23",
+    "pop_totale": 114103,
+    "pop_65plus": 39023,
+    "pct65": 0.342
+  },
+  {
+    "code_dept": "24",
+    "pop_totale": 417714,
+    "pop_65plus": 136592,
+    "pct65": 0.327
+  },
+  {
+    "code_dept": "25",
+    "pop_totale": 550846,
+    "pop_65plus": 112923,
+    "pct65": 0.205
+  },
+  {
+    "code_dept": "26",
+    "pop_totale": 524409,
+    "pop_65plus": 124809,
+    "pct65": 0.238
+  },
+  {
+    "code_dept": "27",
+    "pop_totale": 601942,
+    "pop_65plus": 130019,
+    "pct65": 0.216
+  },
+  {
+    "code_dept": "28",
+    "pop_totale": 433148,
+    "pop_65plus": 95726,
+    "pct65": 0.221
+  },
+  {
+    "code_dept": "29",
+    "pop_totale": 936238,
+    "pop_65plus": 244358,
+    "pct65": 0.261
+  },
+  {
+    "code_dept": "30",
+    "pop_totale": 775994,
+    "pop_65plus": 200206,
+    "pct65": 0.258
+  },
+  {
+    "code_dept": "31",
+    "pop_totale": 1506391,
+    "pop_65plus": 253074,
+    "pct65": 0.168
+  },
+  {
+    "code_dept": "32",
+    "pop_totale": 193053,
+    "pop_65plus": 59653,
+    "pct65": 0.309
+  },
+  {
+    "code_dept": "33",
+    "pop_totale": 1718654,
+    "pop_65plus": 340293,
+    "pct65": 0.198
+  },
+  {
+    "code_dept": "34",
+    "pop_totale": 1252904,
+    "pop_65plus": 285662,
+    "pct65": 0.228
+  },
+  {
+    "code_dept": "35",
+    "pop_totale": 1134891,
+    "pop_65plus": 208820,
+    "pct65": 0.184
+  },
+  {
+    "code_dept": "36",
+    "pop_totale": 213358,
+    "pop_65plus": 66141,
+    "pct65": 0.31
+  },
+  {
+    "code_dept": "37",
+    "pop_totale": 620686,
+    "pop_65plus": 143378,
+    "pct65": 0.231
+  },
+  {
+    "code_dept": "38",
+    "pop_totale": 1308807,
+    "pop_65plus": 257835,
+    "pct65": 0.197
+  },
+  {
+    "code_dept": "39",
+    "pop_totale": 256977,
+    "pop_65plus": 66557,
+    "pct65": 0.259
+  },
+  {
+    "code_dept": "40",
+    "pop_totale": 440763,
+    "pop_65plus": 124736,
+    "pct65": 0.283
+  },
+  {
+    "code_dept": "41",
+    "pop_totale": 327451,
+    "pop_65plus": 89394,
+    "pct65": 0.273
+  },
+  {
+    "code_dept": "42",
+    "pop_totale": 776590,
+    "pop_65plus": 180169,
+    "pct65": 0.232
+  },
+  {
+    "code_dept": "43",
+    "pop_totale": 227959,
+    "pop_65plus": 62005,
+    "pct65": 0.272
+  },
+  {
+    "code_dept": "44",
+    "pop_totale": 1510913,
+    "pop_65plus": 285563,
+    "pct65": 0.189
+  },
+  {
+    "code_dept": "45",
+    "pop_totale": 691006,
+    "pop_65plus": 147184,
+    "pct65": 0.213
+  },
+  {
+    "code_dept": "46",
+    "pop_totale": 176432,
+    "pop_65plus": 60516,
+    "pct65": 0.343
+  },
+  {
+    "code_dept": "47",
+    "pop_totale": 332372,
+    "pop_65plus": 95723,
+    "pct65": 0.288
+  },
+  {
+    "code_dept": "48",
+    "pop_totale": 76452,
+    "pop_65plus": 21942,
+    "pct65": 0.287
+  },
+  {
+    "code_dept": "49",
+    "pop_totale": 835364,
+    "pop_65plus": 175426,
+    "pct65": 0.21
+  },
+  {
+    "code_dept": "50",
+    "pop_totale": 496199,
+    "pop_65plus": 138936,
+    "pct65": 0.28
+  },
+  {
+    "code_dept": "51",
+    "pop_totale": 558743,
+    "pop_65plus": 120130,
+    "pct65": 0.215
+  },
+  {
+    "code_dept": "52",
+    "pop_totale": 167047,
+    "pop_65plus": 47441,
+    "pct65": 0.284
+  },
+  {
+    "code_dept": "53",
+    "pop_totale": 303245,
+    "pop_65plus": 73082,
+    "pct65": 0.241
+  },
+  {
+    "code_dept": "54",
+    "pop_totale": 729358,
+    "pop_65plus": 151706,
+    "pct65": 0.208
+  },
+  {
+    "code_dept": "55",
+    "pop_totale": 177024,
+    "pop_65plus": 47442,
+    "pct65": 0.268
+  },
+  {
+    "code_dept": "56",
+    "pop_totale": 789465,
+    "pop_65plus": 222629,
+    "pct65": 0.282
+  },
+  {
+    "code_dept": "57",
+    "pop_totale": 1050955,
+    "pop_65plus": 234363,
+    "pct65": 0.223
+  },
+  {
+    "code_dept": "58",
+    "pop_totale": 199666,
+    "pop_65plus": 64692,
+    "pct65": 0.324
+  },
+  {
+    "code_dept": "59",
+    "pop_totale": 2615505,
+    "pop_65plus": 478637,
+    "pct65": 0.183
+  },
+  {
+    "code_dept": "60",
+    "pop_totale": 829583,
+    "pop_65plus": 153473,
+    "pct65": 0.185
+  },
+  {
+    "code_dept": "61",
+    "pop_totale": 271896,
+    "pop_65plus": 79394,
+    "pct65": 0.292
+  },
+  {
+    "code_dept": "62",
+    "pop_totale": 1450306,
+    "pop_65plus": 307465,
+    "pct65": 0.212
+  },
+  {
+    "code_dept": "63",
+    "pop_totale": 664068,
+    "pop_65plus": 154064,
+    "pct65": 0.232
+  },
+  {
+    "code_dept": "64",
+    "pop_totale": 713482,
+    "pop_65plus": 190500,
+    "pct65": 0.267
+  },
+  {
+    "code_dept": "65",
+    "pop_totale": 232548,
+    "pop_65plus": 67671,
+    "pct65": 0.291
+  },
+  {
+    "code_dept": "66",
+    "pop_totale": 503866,
+    "pop_65plus": 142090,
+    "pct65": 0.282
+  },
+  {
+    "code_dept": "67",
+    "pop_totale": 1168669,
+    "pop_65plus": 237240,
+    "pct65": 0.203
+  },
+  {
+    "code_dept": "68",
+    "pop_totale": 765827,
+    "pop_65plus": 174609,
+    "pct65": 0.228
+  },
+  {
+    "code_dept": "69",
+    "pop_totale": 1932598,
+    "pop_65plus": 322744,
+    "pct65": 0.167
+  },
+  {
+    "code_dept": "70",
+    "pop_totale": 231932,
+    "pop_65plus": 60998,
+    "pct65": 0.263
+  },
+  {
+    "code_dept": "71",
+    "pop_totale": 545310,
+    "pop_65plus": 156504,
+    "pct65": 0.287
+  },
+  {
+    "code_dept": "72",
+    "pop_totale": 564160,
+    "pop_65plus": 134270,
+    "pct65": 0.238
+  },
+  {
+    "code_dept": "73",
+    "pop_totale": 453159,
+    "pop_65plus": 102414,
+    "pct65": 0.226
+  },
+  {
+    "code_dept": "74",
+    "pop_totale": 870588,
+    "pop_65plus": 152353,
+    "pct65": 0.175
+  },
+  {
+    "code_dept": "75",
+    "pop_totale": 2048472,
+    "pop_65plus": 360531,
+    "pct65": 0.176
+  },
+  {
+    "code_dept": "76",
+    "pop_totale": 1260246,
+    "pop_65plus": 274734,
+    "pct65": 0.218
+  },
+  {
+    "code_dept": "77",
+    "pop_totale": 1479615,
+    "pop_65plus": 229340,
+    "pct65": 0.155
+  },
+  {
+    "code_dept": "78",
+    "pop_totale": 1489363,
+    "pop_65plus": 247234,
+    "pct65": 0.166
+  },
+  {
+    "code_dept": "79",
+    "pop_totale": 374315,
+    "pop_65plus": 96199,
+    "pct65": 0.257
+  },
+  {
+    "code_dept": "80",
+    "pop_totale": 559722,
+    "pop_65plus": 123139,
+    "pct65": 0.22
+  },
+  {
+    "code_dept": "81",
+    "pop_totale": 401283,
+    "pop_65plus": 111557,
+    "pct65": 0.278
+  },
+  {
+    "code_dept": "82",
+    "pop_totale": 267793,
+    "pop_65plus": 64003,
+    "pct65": 0.239
+  },
+  {
+    "code_dept": "83",
+    "pop_totale": 1135917,
+    "pop_65plus": 324872,
+    "pct65": 0.286
+  },
+  {
+    "code_dept": "84",
+    "pop_totale": 573683,
+    "pop_65plus": 143421,
+    "pct65": 0.25
+  },
+  {
+    "code_dept": "85",
+    "pop_totale": 723037,
+    "pop_65plus": 200281,
+    "pct65": 0.277
+  },
+  {
+    "code_dept": "86",
+    "pop_totale": 437151,
+    "pop_65plus": 102293,
+    "pct65": 0.234
+  },
+  {
+    "code_dept": "87",
+    "pop_totale": 371297,
+    "pop_65plus": 99508,
+    "pct65": 0.268
+  },
+  {
+    "code_dept": "88",
+    "pop_totale": 352304,
+    "pop_65plus": 97588,
+    "pct65": 0.277
+  },
+  {
+    "code_dept": "89",
+    "pop_totale": 331131,
+    "pop_65plus": 88743,
+    "pct65": 0.268
+  },
+  {
+    "code_dept": "90",
+    "pop_totale": 138419,
+    "pop_65plus": 29345,
+    "pct65": 0.212
+  },
+  {
+    "code_dept": "91",
+    "pop_totale": 1343527,
+    "pop_65plus": 206903,
+    "pct65": 0.154
+  },
+  {
+    "code_dept": "92",
+    "pop_totale": 1663974,
+    "pop_65plus": 251260,
+    "pct65": 0.151
+  },
+  {
+    "code_dept": "93",
+    "pop_totale": 1711876,
+    "pop_65plus": 208849,
+    "pct65": 0.122
+  },
+  {
+    "code_dept": "94",
+    "pop_totale": 1426433,
+    "pop_65plus": 219671,
+    "pct65": 0.154
+  },
+  {
+    "code_dept": "95",
+    "pop_totale": 1287589,
+    "pop_65plus": 181550,
+    "pct65": 0.141
+  },
+  {
+    "code_dept": "971",
+    "pop_totale": 380387,
+    "pop_65plus": 99281,
+    "pct65": 0.261
+  },
+  {
+    "code_dept": "972",
+    "pop_totale": 355459,
+    "pop_65plus": 99884,
+    "pct65": 0.281
+  },
+  {
+    "code_dept": "973",
+    "pop_totale": 292354,
+    "pop_65plus": 14033,
+    "pct65": 0.048
+  },
+  {
+    "code_dept": "974",
+    "pop_totale": 896175,
+    "pop_65plus": 143388,
+    "pct65": 0.16
+  },
+  {
+    "code_dept": "976",
+    "pop_totale": 329282,
+    "pop_65plus": 6586,
+    "pct65": 0.02
+  }
+]

@@ -1,26 +1,63 @@
 ---
-import "../styles/global.css";
+// src/layouts/Layout.astro
+const { title = "Open Data University — Mini-site", description = "" } = Astro.props;
 ---
-
-<!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://observablehq.com" />
+    <link rel="preconnect" href="https://api.observablehq.com" />
+    <style>
+      :root{--ink:#0f172a;--muted:#475569;--line:#e2e8f0;--bg:#ffffff;--chip:#f1f5f9}
+      html,body{height:100%}
+      body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);margin:0}
+      a{color:#0ea5e9;text-decoration:none}
+      a:hover{text-decoration:underline}
+      .container{max-width:1100px;margin-inline:auto;padding:24px}
+      header{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:10}
+      nav{display:flex;gap:16px;align-items:center;justify-content:space-between;min-height:64px}
+      .navbrand{font-weight:700;letter-spacing:.2px}
+      footer{border-top:1px solid var(--line);margin-top:56px;padding:24px 0;color:var(--muted);font-size:14px}
+      h1{font-size:clamp(28px,2.6vw,40px);margin:.4rem 0 1rem}
+      h2{font-size:clamp(22px,2vw,28px);margin:2.2rem 0 .6rem}
+      p.lead{color:var(--muted);font-size:18px;max-width:70ch}
+      .grid{display:grid;gap:24px}
+      @media(min-width:900px){.grid-2{grid-template-columns:1.1fr .9fr}}
+      .card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+      .card > header{padding:14px 16px;border-bottom:1px solid var(--line);font-weight:600}
+      figure{margin:0}
+      figcaption{padding:10px 14px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;background:var(--chip)}
+      iframe{display:block;width:100%;border:0;background:#fff}
+      .chips{display:flex;gap:8px;flex-wrap:wrap;margin:.6rem 0}
+      .chip{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:12px;color:#0f172a}
+      .kbd{font-family:ui-monospace,Consolas,Monaco,monospace;background:var(--chip);padding:2px 6px;border-radius:6px;border:1px solid var(--line)}
+    </style>
   </head>
   <body>
-    <slot />
+    <header>
+      <div class="container">
+        <nav>
+          <div class="navbrand">Open Data University — Mini-site</div>
+          <div class="chips">
+            <span class="chip">Observable</span>
+            <span class="chip">Dataviz</span>
+            <span class="chip">Astro</span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer>
+      <div class="container">
+        Projet étudiant — MMI Montbéliard. Données ouvertes, visualisations reproductibles.
+      </div>
+    </footer>
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
