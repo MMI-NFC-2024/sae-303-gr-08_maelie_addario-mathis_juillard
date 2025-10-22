@@ -1,0 +1,96 @@
+---
+import PlotFigure from './PlotFigure.astro';
+import { readFile } from 'fs/promises';
+import { join } from 'path';
+import aplCommunes from '../assets/apl_communes (1).json';
+
+// Charger le GeoJSON depuis le dossier public
+const geoJsonPath = join(process.cwd(), 'public/departements.geojson');
+const departementsGeoJSON = JSON.parse(await readFile(geoJsonPath, 'utf-8'));
+
+// Calculer le Q10 (10% pire décile) national
+const aplValues2023 = aplCommunes
+  .filter((d: any) => d.annee === 2023)
+  .map((d: any) => +d.apl_total)
+  .sort((a, b) => a - b);
+
+const q10Index = Math.floor(aplValues2023.length * 0.1);
+const q10Threshold = aplValues2023[q10Index];
+
+// Calculer la part des communes en Q10 par département
+const aplData = aplCommunes
+  .filter((d: any) => d.annee === 2023)
+  .reduce((acc: any, d: any) => {
+    const dept = String(d.code_dept).padStart(2, '0');
+    if (!acc[dept]) acc[dept] = { total: 0, q10: 0 };
+    acc[dept].total++;
+    if (+d.apl_total <= q10Threshold) {
+      acc[dept].q10++;
+    }
+    return acc;
+  }, {});
+
+const q10Data = Object.entries(aplData).map(([code_dept, data]: [string, any]) => ({
+  code_dept,
+  part_q10: data.q10 / data.total
+}));
+
+// Enrichir le GeoJSON
+const enrichedFeatures = departementsGeoJSON.features.map((f: any) => {
+  const code = String(f.properties.code_dept || f.properties.code_insee || f.properties.code || '').padStart(2, '0');
+  const q10 = q10Data.find(a => a.code_dept === code);
+  return {
+    type: 'Feature',
+    geometry: f.geometry,
+    properties: {
+      ...f.properties,
+      code_dept: code,
+      nom: f.properties.nom || f.properties.name || code,
+      part_q10: q10 ? q10.part_q10 : null
+    }
+  };
+});
+
+const geoData = {
+  type: 'FeatureCollection',
+  features: enrichedFeatures
+};
+---
+
+<PlotFigure 
+  title="Étendue de la tension — Part des communes en Q10"
+  description="Part des communes situées dans le pire décile (10% plus bas) APL MG national. Plus la part est élevée, plus la difficulté est étendue dans le département."
+>
+  <div id="carte-q10"></div>
+</PlotFigure>
+
+<script type="module" define:vars={{ geoData }}>
+  import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+  const chart = Plot.plot({
+    width: 1100,
+    height: 900,
+    projection: {
+      type: "mercator",
+      domain: geoData
+    },
+    color: {
+      type: "quantile",
+      n: 7,
+      scheme: "reds",
+      legend: true,
+      label: "Part communes en Q10 → Plus rouge = Tension plus étendue",
+      tickFormat: d => `${(d * 100).toFixed(0)}%`
+    },
+    marks: [
+      Plot.geo(geoData.features, {
+        fill: d => d.properties.part_q10,
+        stroke: "#333",
+        strokeWidth: 0.8,
+        title: d => `${d.properties.nom}\nPart Q10: ${d.properties.part_q10 ? (d.properties.part_q10 * 100).toFixed(1) + '%' : 'Données non disponibles'}\n${d.properties.part_q10 > 0.2 ? '🔴 Tension très étendue' : d.properties.part_q10 > 0.1 ? '🟠 Tension modérée' : '🟢 Tension limitée'}`
+      })
+    ]
+  });
+
+  document.getElementById('carte-q10').appendChild(chart);
+</script>

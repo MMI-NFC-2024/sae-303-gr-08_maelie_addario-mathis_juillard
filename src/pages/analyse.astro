@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ScatterDoubleVulnerabilite from '../components/ScatterDoubleVulnerabilite.astro';
+import HistogrammeAPL from '../components/HistogrammeAPL.astro';
 import SourceLink from '../components/SourceLink.astro';
 ---
 
@@ -49,6 +50,45 @@ import SourceLink from '../components/SourceLink.astro';
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
               Ces territoires sont en <strong class="text-red-700 dark:text-red-400">double vulnérabilité</strong> : 
               ils doivent être <strong class="text-red-700 dark:text-red-400">prioritaires</strong> pour les actions de santé publique.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Histogramme Distribution APL -->
+  <section class="py-16 md:py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12 max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-black mb-4 text-gray-900 dark:text-white">
+            Distribution de l'APL MG en France
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            Ce graphique montre la <strong class="text-gray-900 dark:text-white">répartition des valeurs d'APL MG</strong> 
+            sur l'ensemble des ~35 000 communes françaises. La ligne rouge indique la médiane nationale.
+          </p>
+          <div class="mt-4 flex justify-center">
+            <SourceLink type="apl" />
+          </div>
+        </div>
+
+        <!-- Histogramme -->
+        <HistogrammeAPL />
+
+        <!-- Insight Box -->
+        <div class="flex gap-6 p-8 mt-12 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl border-2 border-blue-200 dark:border-blue-900/50 shadow-lg">
+          <div class="text-4xl flex-shrink-0">📊</div>
+          <div>
+            <h4 class="text-xl font-bold mb-3 text-blue-900 dark:text-blue-400">
+              Lecture du graphique
+            </h4>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              La majorité des communes ont un APL entre <strong>3 et 7</strong>. 
+              Les valeurs <strong>en dessous de 3</strong> (à gauche) correspondent aux zones de difficulté d'accès. 
+              La longue queue à droite montre qu'il existe aussi des communes très bien dotées.
             </p>
           </div>
         </div>

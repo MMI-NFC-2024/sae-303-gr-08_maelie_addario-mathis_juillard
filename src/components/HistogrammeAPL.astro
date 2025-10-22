@@ -1,0 +1,81 @@
+---
+import PlotFigure from './PlotFigure.astro';
+import aplCommunes from '../assets/apl_communes (1).json';
+
+// Préparer les données APL pour 2023
+const aplData2023 = aplCommunes
+  .filter((d: any) => d.annee === 2023)
+  .map((d: any) => ({
+    apl: +d.apl_total,
+    commune: d.libelle_commune || `Commune ${d.code_commune}`
+  }));
+---
+
+<PlotFigure 
+  title="Distribution de l'APL MG — Toutes communes (2023)"
+  description="Histogramme montrant la répartition des valeurs d'APL MG sur l'ensemble des communes françaises. La majorité se situe entre 3 et 7."
+>
+  <div id="histogramme-apl"></div>
+</PlotFigure>
+
+<script type="module" define:vars={{ aplData2023 }}>
+  import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+  const chart = Plot.plot({
+    width: 900,
+    height: 500,
+    marginLeft: 60,
+    marginBottom: 50,
+    x: {
+      label: "APL MG →",
+      grid: true,
+      nice: true
+    },
+    y: {
+      label: "↑ Nombre de communes (Fréquence)",
+      grid: true,
+      nice: true
+    },
+    marks: [
+      Plot.rectY(
+        aplData2023, 
+        Plot.binX(
+          { y: "count" }, 
+          { 
+            x: "apl", 
+            thresholds: 40,
+            fill: "#3b82f6",
+            stroke: "#1e40af",
+            strokeWidth: 0.5
+          }
+        )
+      ),
+      Plot.ruleY([0]),
+      // Ligne médiane
+      Plot.ruleX([aplData2023.map(d => d.apl).sort((a, b) => a - b)[Math.floor(aplData2023.length / 2)]], {
+        stroke: "#ef4444",
+        strokeWidth: 2,
+        strokeDasharray: "5,5"
+      }),
+      // Texte médiane
+      Plot.text(
+        [{
+          x: aplData2023.map(d => d.apl).sort((a, b) => a - b)[Math.floor(aplData2023.length / 2)],
+          y: 0,
+          label: "Médiane"
+        }],
+        {
+          x: "x",
+          y: "y",
+          text: "label",
+          dy: -10,
+          fill: "#ef4444",
+          fontSize: 12,
+          fontWeight: "bold"
+        }
+      )
+    ]
+  });
+
+  document.getElementById('histogramme-apl').appendChild(chart);
+</script>

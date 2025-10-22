@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import CarteAPL from '../components/CarteAPL.astro';
 import CarteVieillissement from '../components/CarteVieillissement.astro';
 import ComparaisonCartes2022_2023 from '../components/ComparaisonCartes2022_2023.astro';
+import CarteQ10 from '../components/CarteQ10.astro';
 import SourceLink from '../components/SourceLink.astro';
 ---
 
@@ -157,6 +158,45 @@ import SourceLink from '../components/SourceLink.astro';
               <div class="font-semibold text-gray-900 dark:text-white mb-2">Cantal (15)</div>
               <div class="text-2xl font-bold gradient-text">~30% de 65+</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carte Q10 - Étendue de la tension -->
+  <section class="py-16 md:py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12 max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-black mb-4 text-gray-900 dark:text-white">
+            Carte 4 : Étendue de la tension MG
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            Cette carte montre la <strong class="text-gray-900 dark:text-white">part des communes</strong> de chaque département 
+            situées dans le <strong class="text-gray-900 dark:text-white">pire décile</strong> (10% plus bas) APL MG national.
+            Plus la part est élevée, plus la difficulté d'accès est étendue.
+          </p>
+          <div class="mt-4 flex justify-center">
+            <SourceLink type="apl" />
+          </div>
+        </div>
+
+        <!-- Carte -->
+        <CarteQ10 />
+
+        <!-- Insight Box -->
+        <div class="flex gap-6 p-8 mt-12 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl border-2 border-red-200 dark:border-red-900/50 shadow-lg">
+          <div class="text-4xl flex-shrink-0">🔥</div>
+          <div>
+            <h4 class="text-xl font-bold mb-3 text-red-900 dark:text-red-400">
+              L'ampleur du problème
+            </h4>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Un département peut avoir une APL médiane correcte, mais si une grande part de ses communes est en Q10, 
+              cela révèle une <strong class="text-red-700 dark:text-red-400">tension étendue</strong> qui nécessite des actions ciblées.
+            </p>
           </div>
         </div>
       </div>
