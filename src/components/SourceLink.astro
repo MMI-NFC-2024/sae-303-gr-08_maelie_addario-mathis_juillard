@@ -1,0 +1,41 @@
+---
+interface Props {
+  type: 'apl' | 'insee' | 'geojson' | 'defi';
+  className?: string;
+}
+
+const { type, className = '' } = Astro.props;
+
+const sources = {
+  apl: {
+    url: 'https://defis.data.gouv.fr/datasets/62263314072c63d4d53e0c50',
+    label: 'Source : APL MG (DREES)'
+  },
+  insee: {
+    url: 'https://www.insee.fr/fr/statistiques/7728787?sommaire=7728826',
+    label: 'Source : Démographie (INSEE)'
+  },
+  geojson: {
+    url: 'https://github.com/gregoiredavid/france-geojson/tree/master',
+    label: 'Source : Géométries (IGN)'
+  },
+  defi: {
+    url: 'https://defis.data.gouv.fr/defis/sante-et-territoires',
+    label: 'Source : Défi Open Data University'
+  }
+};
+
+const source = sources[type];
+---
+
+<a 
+  href={source.url} 
+  target="_blank" 
+  rel="noopener noreferrer"
+  class={`inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors ${className}`}
+>
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+  </svg>
+  <span>{source.label}</span>
+</a>

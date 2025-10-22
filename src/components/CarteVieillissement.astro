@@ -54,15 +54,15 @@ const geoData = {
       n: 8,
       scheme: "blues",
       legend: true,
-      label: "% de 65 ans et +",
-      tickFormat: d => `${(d * 100).toFixed(1)}%`
+      label: "% de 65 ans et + → Plus foncé = Population plus âgée",
+      tickFormat: d => `${(d * 100).toFixed(0)}%`
     },
     marks: [
       Plot.geo(geoData.features, {
         fill: d => d.properties.pct65,
-        stroke: "#999",
-        strokeWidth: 0.5,
-        title: d => `${d.properties.nom}\n% 65+: ${d.properties.pct65 ? (d.properties.pct65 * 100).toFixed(1) + '%' : 'n.d.'}`
+        stroke: "#333",
+        strokeWidth: 0.8,
+        title: d => `${d.properties.nom}\n65 ans et + : ${d.properties.pct65 ? (d.properties.pct65 * 100).toFixed(1) + '%' : 'Données non disponibles'}\n${d.properties.pct65 > 0.25 ? '👴 Population très âgée' : d.properties.pct65 > 0.20 ? '→ Vieillissement modéré' : '👨 Population jeune'}`
       })
     ]
   });

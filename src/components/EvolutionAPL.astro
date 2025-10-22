@@ -79,15 +79,19 @@ const franceMoyenne = [2022, 2023].map(year => {
       marginLeft: 60,
       marginBottom: 50,
       x: {
-        label: "Année",
-        tickFormat: d => String(d)
+        label: "Année →",
+        tickFormat: d => String(d),
+        nice: true
       },
       y: {
-        label: "APL MG (médiane)",
-        grid: true
+        label: "APL MG médiane → Plus haut = Meilleur accès",
+        grid: true,
+        nice: true
       },
       color: {
-        legend: true
+        legend: true,
+        domain: ["Département sélectionné", "Moyenne nationale"],
+        range: ["#3b82f6", "#94a3b8"]
       },
       marks: [
         // Moyenne France
@@ -95,17 +99,19 @@ const franceMoyenne = [2022, 2023].map(year => {
           x: "annee",
           y: "apl_median",
           stroke: "#94a3b8",
-          strokeWidth: 2,
+          strokeWidth: 2.5,
           strokeDasharray: "5,5",
-          marker: "dot"
+          marker: "dot",
+          markerSize: 6
         }),
         Plot.text(franceMoyenne, {
           x: "annee",
           y: "apl_median",
-          text: d => `${d.apl_median.toFixed(2)}`,
-          dy: -10,
+          text: d => `France: ${d.apl_median.toFixed(1)}`,
+          dy: -15,
           fill: "#64748b",
-          fontSize: 11
+          fontSize: 12,
+          fontWeight: "600"
         }),
         // Département sélectionné
         ...(deptData.length > 0 ? [
@@ -113,14 +119,15 @@ const franceMoyenne = [2022, 2023].map(year => {
             x: "annee",
             y: "apl_median",
             stroke: "#3b82f6",
-            strokeWidth: 3,
-            marker: "dot"
+            strokeWidth: 3.5,
+            marker: "dot",
+            markerSize: 8
           }),
           Plot.text(deptData, {
             x: "annee",
             y: "apl_median",
-            text: d => `${d.apl_median.toFixed(2)}`,
-            dy: -10,
+            text: d => `Dept: ${d.apl_median.toFixed(1)}`,
+            dy: -15,
             fill: "#1e40af",
             fontSize: 12,
             fontWeight: "bold"

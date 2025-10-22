@@ -65,7 +65,7 @@ const departementsData = Object.entries(aplData).map(([code_dept, values]: [stri
         </div>
       </div>
 
-      <div id="diagnostic-alert" style="margin-top: 1.5rem; padding: 1rem; border-radius: 8px; display: none;"></div>
+      <div id="diagnostic-alert" style="margin-top: 1.5rem; padding: 1.25rem; border-radius: 12px; display: none; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); line-height: 1.6;"></div>
     </div>
   </div>
 </div>
@@ -120,19 +120,25 @@ const departementsData = Object.entries(aplData).map(([code_dept, values]: [stri
 
     if (isLowAPL && isHighAging) {
       alert.style.display = 'block';
-      alert.style.background = '#fee';
-      alert.style.border = '2px solid #ef4444';
-      alert.innerHTML = '<strong>⚠️ Double vulnérabilité détectée</strong><br>Ce département cumule un faible APL MG et une population âgée élevée.';
+      alert.style.background = 'linear-gradient(135deg, #fecaca 0%, #fca5a5 100%)';
+      alert.style.border = '3px solid #dc2626';
+      alert.style.color = '#7f1d1d';
+      alert.style.fontWeight = '500';
+      alert.innerHTML = '<strong style="color: #991b1b; font-size: 1.1rem;">🔴 Double vulnérabilité détectée</strong><br><span style="color: #7f1d1d;">Ce département cumule un faible APL MG et une population âgée élevée. Action prioritaire recommandée.</span>';
     } else if (isLowAPL) {
       alert.style.display = 'block';
-      alert.style.background = '#fef3cd';
-      alert.style.border = '2px solid #f59e0b';
-      alert.innerHTML = '<strong>⚡ Accès difficile</strong><br>APL MG inférieur à la moyenne nationale.';
+      alert.style.background = 'linear-gradient(135deg, #fde68a 0%, #fcd34d 100%)';
+      alert.style.border = '3px solid #d97706';
+      alert.style.color = '#78350f';
+      alert.style.fontWeight = '500';
+      alert.innerHTML = '<strong style="color: #92400e; font-size: 1.1rem;">🟠 Accès difficile aux soins</strong><br><span style="color: #78350f;">APL MG inférieur à la moyenne nationale. Surveillance recommandée.</span>';
     } else if (isHighAging) {
       alert.style.display = 'block';
-      alert.style.background = '#dbeafe';
-      alert.style.border = '2px solid #3b82f6';
-      alert.innerHTML = '<strong>👴 Population vieillissante</strong><br>Part des 65+ supérieure à la moyenne.';
+      alert.style.background = 'linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%)';
+      alert.style.border = '3px solid #2563eb';
+      alert.style.color = '#1e3a8a';
+      alert.style.fontWeight = '500';
+      alert.innerHTML = '<strong style="color: #1e40af; font-size: 1.1rem;">� Population vieillissante</strong><br><span style="color: #1e3a8a;">Part des 65+ supérieure à la moyenne. Anticiper les besoins futurs.</span>';
     } else {
       alert.style.display = 'none';
     }

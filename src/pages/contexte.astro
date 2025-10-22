@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import CarteAPL from '../components/CarteAPL.astro';
 import CarteVieillissement from '../components/CarteVieillissement.astro';
 import ComparaisonCartes2022_2023 from '../components/ComparaisonCartes2022_2023.astro';
+import SourceLink from '../components/SourceLink.astro';
 ---
 
 <Layout title="Contexte | Santé & Territoires">
@@ -89,6 +90,9 @@ import ComparaisonCartes2022_2023 from '../components/ComparaisonCartes2022_2023
             Cette carte montre l'<strong class="text-gray-900 dark:text-white">APL MG médiane</strong> par département. 
             Les zones les plus sombres correspondent aux territoires où l'accès aux médecins généralistes est le plus difficile.
           </p>
+          <div class="mt-4 flex justify-center">
+            <SourceLink type="apl" />
+          </div>
         </div>
 
         <!-- Carte -->
@@ -124,6 +128,9 @@ import ComparaisonCartes2022_2023 from '../components/ComparaisonCartes2022_2023
             Cette carte représente la <strong class="text-gray-900 dark:text-white">part des 65 ans et plus</strong> dans chaque département. 
             Les territoires en bleu foncé sont ceux où la population vieillit le plus rapidement.
           </p>
+          <div class="mt-4 flex justify-center">
+            <SourceLink type="insee" />
+          </div>
         </div>
 
         <!-- Carte -->
@@ -169,6 +176,9 @@ import ComparaisonCartes2022_2023 from '../components/ComparaisonCartes2022_2023
             Comparez l'APL MG entre 2022 et 2023 pour identifier les départements en <strong class="text-gray-900 dark:text-white">amélioration</strong> 
             (plus clairs) ou en <strong class="text-gray-900 dark:text-white">dégradation</strong> (plus foncés).
           </p>
+          <div class="mt-4 flex justify-center">
+            <SourceLink type="apl" />
+          </div>
         </div>
 
         <!-- Carte -->

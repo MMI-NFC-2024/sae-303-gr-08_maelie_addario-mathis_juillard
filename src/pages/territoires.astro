@@ -4,6 +4,7 @@ import DiagnosticDepartement from '../components/DiagnosticDepartement.astro';
 import EvolutionAPL from '../components/EvolutionAPL.astro';
 import CarteCommunale from '../components/CarteCommunale.astro';
 import ComparaisonCartes2022_2023 from '../components/ComparaisonCartes2022_2023.astro';
+import SourceLink from '../components/SourceLink.astro';
 ---
 
 <Layout title="Territoires | Santé & Territoires">
@@ -79,6 +80,10 @@ import ComparaisonCartes2022_2023 from '../components/ComparaisonCartes2022_2023
           <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             Utilisez le sélecteur interactif pour choisir un département et afficher son diagnostic complet.
           </p>
+          <div class="mt-4 flex flex-wrap justify-center gap-4">
+            <SourceLink type="apl" />
+            <SourceLink type="insee" />
+          </div>
         </div>
 
         <DiagnosticDepartement />
@@ -96,7 +101,12 @@ import ComparaisonCartes2022_2023 from '../components/ComparaisonCartes2022_2023
             Évolution de l'APL MG
           </h2>
           <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-            Comparez l'évolution de l'APL MG du département sélectionné avec la moyenne nationale. 
+            Comparez l'évolution de l'APL MG du département sélectionné avec la moyenne nationale.
+          </p>
+          <div class="mt-4 flex justify-center">
+            <SourceLink type="apl" />
+          </div>
+        </div> 
             Une pente descendante indique une dégradation de l'accès aux médecins généralistes.
           </p>
         </div>
@@ -135,6 +145,10 @@ import ComparaisonCartes2022_2023 from '../components/ComparaisonCartes2022_2023
             Carte détaillée montrant l'APL MG à l'échelle communale. 
             Utile pour identifier les poches de fragilité au sein d'un même département.
           </p>
+          <div class="mt-4 flex flex-wrap justify-center gap-4">
+            <SourceLink type="apl" />
+            <SourceLink type="geojson" />
+          </div>
         </div>
 
         <CarteCommunale />

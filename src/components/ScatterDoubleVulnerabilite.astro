@@ -47,29 +47,43 @@ const scatterData = demographie
     marginLeft: 60,
     marginBottom: 50,
     x: {
-      label: "APL MG (plus bas = accès difficile)",
-      grid: true
+      label: "APL MG médiane → Plus bas = Accès plus difficile",
+      grid: true,
+      nice: true
     },
     y: {
-      label: "% de 65 ans et +",
+      label: "% de 65 ans et + → Plus haut = Population plus âgée",
       grid: true,
-      tickFormat: d => `${(d * 100).toFixed(0)}%`
+      tickFormat: d => `${(d * 100).toFixed(0)}%`,
+      nice: true
+    },
+    color: {
+      type: "categorical",
+      domain: ["Département", "Tendance"],
+      range: ["#3b82f6", "#ef4444"]
     },
     marks: [
       Plot.dot(scatterData, {
         x: "apl_median",
         y: "pct65",
-        r: 5,
+        r: 6,
         fill: "#3b82f6",
         opacity: 0.7,
-        title: d => `Dept ${d.code_dept}\nAPL: ${d.apl_median.toFixed(2)}\n% 65+: ${(d.pct65 * 100).toFixed(1)}%`
+        stroke: "#1e40af",
+        strokeWidth: 1,
+        title: d => `Département ${d.code_dept}\nAPL MG: ${d.apl_median.toFixed(1)}\n65+ : ${(d.pct65 * 100).toFixed(1)}%\n${d.apl_median < 3 && d.pct65 > 0.23 ? '🔴 PRIORITÉ: Double vulnérabilité' : d.apl_median < 4 ? '🟠 Attention: Accès limité' : '🟢 Situation correcte'}`
       }),
       Plot.linearRegressionY(scatterData, {
         x: "apl_median",
         y: "pct65",
         stroke: "#ef4444",
-        strokeWidth: 2
-      })
+        strokeWidth: 2.5,
+        strokeDasharray: "5,5",
+        opacity: 0.8
+      }),
+      // Lignes de référence
+      Plot.ruleX([3], { stroke: "#f59e0b", strokeWidth: 1, strokeDasharray: "3,3", opacity: 0.5 }),
+      Plot.ruleY([0.23], { stroke: "#f59e0b", strokeWidth: 1, strokeDasharray: "3,3", opacity: 0.5 })
     ]
   });
 

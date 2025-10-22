@@ -67,7 +67,8 @@ const geoData = {
       scheme: "YlOrRd",
       reverse: true,
       legend: true,
-      label: "APL MG"
+      label: "APL MG par commune → Rouge foncé = Accès très difficile",
+      tickFormat: d => d.toFixed(1)
     },
     marks: [
       Plot.geo(geoData.features, {
@@ -76,8 +77,8 @@ const geoData = {
         strokeWidth: 0.2,
         strokeOpacity: 0.5,
         title: d => d.properties.apl 
-          ? `${d.properties.nom}\nAPL: ${d.properties.apl.toFixed(2)}`
-          : `${d.properties.nom}\nAPL: n.d.`
+          ? `${d.properties.nom}\nAPL MG: ${d.properties.apl.toFixed(1)}\n${d.properties.apl < 2 ? '🔴 Accès très difficile' : d.properties.apl < 4 ? '🟠 Accès difficile' : d.properties.apl < 6 ? '🟡 Accès moyen' : '🟢 Bon accès'}`
+          : `${d.properties.nom}\nAPL: Données non disponibles`
       })
     ]
   });

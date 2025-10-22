@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ScatterDoubleVulnerabilite from '../components/ScatterDoubleVulnerabilite.astro';
+import SourceLink from '../components/SourceLink.astro';
 ---
 
 <Layout title="Analyse | Santé & Territoires">
@@ -68,6 +69,10 @@ import ScatterDoubleVulnerabilite from '../components/ScatterDoubleVulnerabilite
             Chaque point représente un département. L'axe horizontal (X) montre l'APL MG (médiane), 
             l'axe vertical (Y) montre le pourcentage de 65 ans et plus.
           </p>
+          <div class="mt-4 flex flex-wrap justify-center gap-4">
+            <SourceLink type="apl" />
+            <SourceLink type="insee" />
+          </div>
         </div>
 
         <!-- Scatter -->

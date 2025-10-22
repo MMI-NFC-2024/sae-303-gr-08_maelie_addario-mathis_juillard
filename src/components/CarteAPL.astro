@@ -69,14 +69,16 @@ const geoData = {
       n: 7,
       scheme: "blues",
       legend: true,
-      label: "APL MG (médiane)"
+      label: "APL MG (médiane) → Plus foncé = Accès difficile",
+      tickFormat: d => d.toFixed(1),
+      reverse: false
     },
     marks: [
       Plot.geo(geoData.features, {
         fill: d => d.properties.apl_median,
-        stroke: "#999",
-        strokeWidth: 0.5,
-        title: d => `${d.properties.nom}\nAPL: ${d.properties.apl_median ? d.properties.apl_median.toFixed(2) : 'n.d.'}`
+        stroke: "#333",
+        strokeWidth: 0.8,
+        title: d => `${d.properties.nom}\nAPL MG: ${d.properties.apl_median ? d.properties.apl_median.toFixed(1) : 'Données non disponibles'}\n${d.properties.apl_median < 3 ? '⚠️ Accès difficile' : d.properties.apl_median > 5 ? '✓ Bon accès' : '→ Accès moyen'}`
       })
     ]
   });
