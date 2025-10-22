@@ -55,150 +55,217 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Leviers d'action Section -->
-  <section class="section" style="background: var(--card);">
-    <div class="container">
-      <div class="levers-section">
-        <h2 class="levers-section__title">Les 3 leviers d'action</h2>
+  <section class="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-black mb-16 text-center text-gray-900 dark:text-white">
+          Les 3 leviers d'action
+        </h2>
         
-        <!-- Levier 1 -->
-        <div class="lever-card lever-card--1">
-          <div class="lever-card__header">
-            <div class="lever-card__number">01</div>
-            <h3 class="lever-card__title">Renforts mobiles MG</h3>
-            <div class="lever-card__badge">
-              <span class="badge badge--warning">Urgence</span>
+        <div class="space-y-12">
+          <!-- Levier 1 -->
+          <div class="bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+            <!-- Header -->
+            <div class="flex items-center justify-between gap-6 p-8 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 border-b border-gray-200 dark:border-gray-700">
+              <div class="flex items-center gap-6">
+                <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white text-2xl font-black shadow-lg">
+                  01
+                </div>
+                <h3 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
+                  Renforts mobiles MG
+                </h3>
+              </div>
+              <span class="px-4 py-2 rounded-full text-sm font-semibold bg-red-500 text-white shadow-md flex-shrink-0">
+                Urgence
+              </span>
             </div>
-          </div>
-          
-          <div class="lever-card__content">
-            <p class="lever-card__description">
-              Déployer des <strong>consultations avancées</strong> et des <strong>vacations tournantes</strong> 
-              pour pallier rapidement le manque de médecins généralistes installés.
-            </p>
+            
+            <!-- Content -->
+            <div class="p-8">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+                Déployer des <strong class="text-gray-900 dark:text-white">consultations avancées</strong> et des <strong class="text-gray-900 dark:text-white">vacations tournantes</strong> 
+                pour pallier rapidement le manque de médecins généralistes installés.
+              </p>
 
-            <div class="lever-card__details">
-              <h4 class="lever-card__subtitle">Actions concrètes :</h4>
-              <ul class="lever-card__list">
-                <li>
-                  <strong>Consultations avancées :</strong> 1 jour/semaine dans les communes isolées 
-                  (permanence dans une mairie, salle communale, etc.)
+              <h4 class="text-xl font-bold mb-4 text-red-600 dark:text-red-400">Actions concrètes :</h4>
+              <ul class="space-y-4 mb-8">
+                <li class="flex gap-3">
+                  <span class="text-red-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Consultations avancées :</strong> 1 jour/semaine dans les communes isolées 
+                    (permanence dans une mairie, salle communale, etc.)
+                  </span>
                 </li>
-                <li>
-                  <strong>Vacations tournantes :</strong> Médecins salariés hospitaliers ou libéraux 
-                  qui assurent des permanences régulières
+                <li class="flex gap-3">
+                  <span class="text-red-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Vacations tournantes :</strong> Médecins salariés hospitaliers ou libéraux 
+                    qui assurent des permanences régulières
+                  </span>
                 </li>
-                <li>
-                  <strong>Télé-expertise encadrée :</strong> Téléconsultation avec infirmier présent 
-                  pour les actes simples (renouvellement, suivi chronique)
+                <li class="flex gap-3">
+                  <span class="text-red-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Télé-expertise encadrée :</strong> Téléconsultation avec infirmier présent 
+                    pour les actes simples (renouvellement, suivi chronique)
+                  </span>
                 </li>
-                <li>
-                  <strong>Cabinets itinérants :</strong> Unité mobile équipée pour les zones très isolées
+                <li class="flex gap-3">
+                  <span class="text-red-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Cabinets itinérants :</strong> Unité mobile équipée pour les zones très isolées
+                  </span>
                 </li>
               </ul>
 
-              <div class="lever-card__example">
-                <h5 class="lever-card__example-title">📖 Exemple terrain</h5>
-                <p class="lever-card__example-text">
+              <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl border-l-4 border-blue-500">
+                <h5 class="text-lg font-bold mb-2 text-blue-900 dark:text-blue-400 flex items-center gap-2">
+                  <span>📖</span> Exemple terrain
+                </h5>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
                   Dans la Creuse, des médecins du CH de Guéret assurent des consultations avancées 
                   1 fois/semaine dans 5 communes rurales, réduisant le temps d'accès de 45 min en moyenne.
                 </p>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Levier 2 -->
-        <div class="lever-card lever-card--2">
-          <div class="lever-card__header">
-            <div class="lever-card__number">02</div>
-            <h3 class="lever-card__title">Incitations ciblées MG</h3>
-            <div class="lever-card__badge">
-              <span class="badge badge--success">Structurel</span>
+          <!-- Levier 2 -->
+          <div class="bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+            <!-- Header -->
+            <div class="flex items-center justify-between gap-6 p-8 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-b border-gray-200 dark:border-gray-700">
+              <div class="flex items-center gap-6">
+                <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white text-2xl font-black shadow-lg">
+                  02
+                </div>
+                <h3 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
+                  Incitations ciblées MG
+                </h3>
+              </div>
+              <span class="px-4 py-2 rounded-full text-sm font-semibold bg-green-500 text-white shadow-md flex-shrink-0">
+                Structurel
+              </span>
             </div>
-          </div>
-          
-          <div class="lever-card__content">
-            <p class="lever-card__description">
-              Rendre les territoires fragiles <strong>attractifs</strong> pour l'installation 
-              de jeunes médecins généralistes via des aides financières et matérielles.
-            </p>
+            
+            <!-- Content -->
+            <div class="p-8">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+                Rendre les territoires fragiles <strong class="text-gray-900 dark:text-white">attractifs</strong> pour l'installation 
+                de jeunes médecins généralistes via des aides financières et matérielles.
+              </p>
 
-            <div class="lever-card__details">
-              <h4 class="lever-card__subtitle">Actions concrètes :</h4>
-              <ul class="lever-card__list">
-                <li>
-                  <strong>MSP / Maisons de santé pluriprofessionnelles :</strong> Créer des structures 
-                  modernes qui favorisent le travail en équipe (infirmiers, kiné, etc.)
+              <h4 class="text-xl font-bold mb-4 text-green-600 dark:text-green-400">Actions concrètes :</h4>
+              <ul class="space-y-4 mb-8">
+                <li class="flex gap-3">
+                  <span class="text-green-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">MSP / Maisons de santé pluriprofessionnelles :</strong> Créer des structures 
+                    modernes qui favorisent le travail en équipe (infirmiers, kiné, etc.)
+                  </span>
                 </li>
-                <li>
-                  <strong>Terrains de stage :</strong> Accueillir des internes en médecine générale 
-                  pour les familiariser avec le territoire
+                <li class="flex gap-3">
+                  <span class="text-green-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Terrains de stage :</strong> Accueillir des internes en médecine générale 
+                    pour les familiariser avec le territoire
+                  </span>
                 </li>
-                <li>
-                  <strong>Aide au logement :</strong> Mise à disposition d'un logement ou aide financière 
-                  à l'installation (crédit, loyer)
+                <li class="flex gap-3">
+                  <span class="text-green-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Aide au logement :</strong> Mise à disposition d'un logement ou aide financière 
+                    à l'installation (crédit, loyer)
+                  </span>
                 </li>
-                <li>
-                  <strong>Mobilité facilitée :</strong> Véhicule de fonction, aide au permis, 
-                  remboursement des déplacements
+                <li class="flex gap-3">
+                  <span class="text-green-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Mobilité facilitée :</strong> Véhicule de fonction, aide au permis, 
+                    remboursement des déplacements
+                  </span>
                 </li>
-                <li>
-                  <strong>Secrétariat mutualisé :</strong> Prise en charge administrative pour libérer 
-                  du temps médical
+                <li class="flex gap-3">
+                  <span class="text-green-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Secrétariat mutualisé :</strong> Prise en charge administrative pour libérer 
+                    du temps médical
+                  </span>
                 </li>
               </ul>
 
-              <div class="lever-card__example">
-                <h5 class="lever-card__example-title">📖 Exemple terrain</h5>
-                <p class="lever-card__example-text">
+              <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl border-l-4 border-blue-500">
+                <h5 class="text-lg font-bold mb-2 text-blue-900 dark:text-blue-400 flex items-center gap-2">
+                  <span>📖</span> Exemple terrain
+                </h5>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
                   À Château-Chinon (Nièvre), une MSP créée en 2019 a permis l'installation de 3 jeunes MG 
                   grâce à un accompagnement complet (locaux neufs, secrétariat, logement).
                 </p>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Levier 3 -->
-        <div class="lever-card lever-card--3">
-          <div class="lever-card__header">
-            <div class="lever-card__number">03</div>
-            <h3 class="lever-card__title">Transport à la demande santé</h3>
-            <div class="lever-card__badge">
-              <span class="badge">Complémentaire</span>
+          <!-- Levier 3 -->
+          <div class="bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+            <!-- Header -->
+            <div class="flex items-center justify-between gap-6 p-8 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-b border-gray-200 dark:border-gray-700">
+              <div class="flex items-center gap-6">
+                <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-2xl font-black shadow-lg">
+                  03
+                </div>
+                <h3 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
+                  Transport à la demande santé
+                </h3>
+              </div>
+              <span class="px-4 py-2 rounded-full text-sm font-semibold bg-gray-500 text-white shadow-md flex-shrink-0">
+                Complémentaire
+              </span>
             </div>
-          </div>
-          
-          <div class="lever-card__content">
-            <p class="lever-card__description">
-              Faciliter l'<strong>accès physique</strong> aux soins pour les personnes âgées ou isolées 
-              qui ne peuvent pas se déplacer seules.
-            </p>
+            
+            <!-- Content -->
+            <div class="p-8">
+              <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+                Faciliter l'<strong class="text-gray-900 dark:text-white">accès physique</strong> aux soins pour les personnes âgées ou isolées 
+                qui ne peuvent pas se déplacer seules.
+              </p>
 
-            <div class="lever-card__details">
-              <h4 class="lever-card__subtitle">Actions concrètes :</h4>
-              <ul class="lever-card__list">
-                <li>
-                  <strong>Navettes vers pôles de soins :</strong> Minibus collectif reliant les communes 
-                  isolées aux cabinets médicaux ou hôpitaux de proximité
+              <h4 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">Actions concrètes :</h4>
+              <ul class="space-y-4 mb-8">
+                <li class="flex gap-3">
+                  <span class="text-blue-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Navettes vers pôles de soins :</strong> Minibus collectif reliant les communes 
+                    isolées aux cabinets médicaux ou hôpitaux de proximité
+                  </span>
                 </li>
-                <li>
-                  <strong>Transport à la demande (TAD) :</strong> Service de réservation pour trajets 
-                  individuels ou petits groupes
+                <li class="flex gap-3">
+                  <span class="text-blue-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Transport à la demande (TAD) :</strong> Service de réservation pour trajets 
+                    individuels ou petits groupes
+                  </span>
                 </li>
-                <li>
-                  <strong>Co-voiturage solidaire :</strong> Plateforme locale de mise en relation 
-                  avec des bénévoles pour accompagnement aux RDV médicaux
+                <li class="flex gap-3">
+                  <span class="text-blue-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Co-voiturage solidaire :</strong> Plateforme locale de mise en relation 
+                    avec des bénévoles pour accompagnement aux RDV médicaux
+                  </span>
                 </li>
-                <li>
-                  <strong>Partenariat taxi/ambulance :</strong> Tarifs préférentiels négociés avec 
-                  les transporteurs locaux
+                <li class="flex gap-3">
+                  <span class="text-blue-500 font-bold flex-shrink-0">→</span>
+                  <span class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white">Partenariat taxi/ambulance :</strong> Tarifs préférentiels négociés avec 
+                    les transporteurs locaux
+                  </span>
                 </li>
               </ul>
 
-              <div class="lever-card__example">
-                <h5 class="lever-card__example-title">📖 Exemple terrain</h5>
-                <p class="lever-card__example-text">
+              <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl border-l-4 border-blue-500">
+                <h5 class="text-lg font-bold mb-2 text-blue-900 dark:text-blue-400 flex items-center gap-2">
+                  <span>📖</span> Exemple terrain
+                </h5>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
                   Dans le Cantal, le service "Cantal Lib" propose des navettes 2 fois/semaine 
                   depuis 12 communes rurales vers le centre hospitalier d'Aurillac (tarif : 2€).
                 </p>
@@ -211,123 +278,228 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Priorisation Section -->
-  <section class="section">
-    <div class="container">
-      <div class="priority-section">
-        <h2 class="priority-section__title">Comment prioriser ?</h2>
-        <p class="priority-section__subtitle">
+  <section class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          Comment prioriser ?
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
           Tous les territoires ne nécessitent pas les mêmes actions au même moment. 
           Voici une matrice de priorisation basée sur l'urgence et l'impact.
         </p>
+      </div>
 
-        <div class="priority-matrix">
-          <div class="priority-matrix__header">
-            <div class="priority-matrix__label priority-matrix__label--y">IMPACT</div>
-            <div class="priority-matrix__grid">
-              <div class="priority-matrix__cell priority-matrix__cell--header"></div>
-              <div class="priority-matrix__cell priority-matrix__cell--header">Court terme</div>
-              <div class="priority-matrix__cell priority-matrix__cell--header">Moyen terme</div>
-              <div class="priority-matrix__cell priority-matrix__cell--header">Long terme</div>
+      <!-- Priority Matrix -->
+      <div class="relative">
+        <!-- Y-axis label -->
+        <div class="absolute -left-8 top-1/2 -translate-y-1/2 -rotate-90 text-sm font-bold text-gray-500 dark:text-gray-400">
+          IMPACT
+        </div>
 
-              <div class="priority-matrix__cell priority-matrix__cell--label">Élevé</div>
-              <div class="priority-matrix__cell priority-matrix__cell--high">
-                <strong>🔴 Levier 1</strong><br/>
-                Renforts mobiles<br/>
-                <em>(urgent)</em>
-              </div>
-              <div class="priority-matrix__cell priority-matrix__cell--high">
-                <strong>🟠 Levier 2</strong><br/>
-                Incitations MG<br/>
-                <em>(structurel)</em>
-              </div>
-              <div class="priority-matrix__cell priority-matrix__cell--medium">
-                <strong>Formation</strong><br/>
-                Attractivité<br/>
-                <em>(préventif)</em>
-              </div>
+        <!-- Grid Container -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-700">
+          <div class="grid grid-cols-4 gap-4">
+            <!-- Headers Row -->
+            <div class="text-center font-semibold text-gray-400 dark:text-gray-500"></div>
+            <div class="text-center p-4 font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700/50 rounded-lg">
+              Court terme
+            </div>
+            <div class="text-center p-4 font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700/50 rounded-lg">
+              Moyen terme
+            </div>
+            <div class="text-center p-4 font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700/50 rounded-lg">
+              Long terme
+            </div>
 
-              <div class="priority-matrix__cell priority-matrix__cell--label">Moyen</div>
-              <div class="priority-matrix__cell priority-matrix__cell--medium">
-                <strong>🟡 Levier 3</strong><br/>
-                Transport santé<br/>
-                <em>(palliatif)</em>
-              </div>
-              <div class="priority-matrix__cell priority-matrix__cell--low">
-                Communication<br/>
-                <em>(soutien)</em>
-              </div>
-              <div class="priority-matrix__cell priority-matrix__cell--low">
-                Veille territoriale<br/>
-                <em>(monitoring)</em>
-              </div>
+            <!-- Row 1: Élevé -->
+            <div class="flex items-center justify-center font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700/50 rounded-lg p-4">
+              Élevé
+            </div>
+            <div class="p-6 bg-gradient-to-br from-red-50 to-rose-50 dark:from-red-900/20 dark:to-rose-900/20 border-2 border-red-300 dark:border-red-700 rounded-xl text-center">
+              <div class="text-lg font-black text-red-600 dark:text-red-400 mb-2">🔴 Levier 1</div>
+              <div class="text-gray-700 dark:text-gray-300 font-semibold">Renforts mobiles</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 italic mt-1">(urgent)</div>
+            </div>
+            <div class="p-6 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border-2 border-orange-300 dark:border-orange-700 rounded-xl text-center">
+              <div class="text-lg font-black text-orange-600 dark:text-orange-400 mb-2">🟠 Levier 2</div>
+              <div class="text-gray-700 dark:text-gray-300 font-semibold">Incitations MG</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 italic mt-1">(structurel)</div>
+            </div>
+            <div class="p-6 bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-xl text-center">
+              <div class="text-gray-700 dark:text-gray-300 font-bold mb-2">Formation</div>
+              <div class="text-gray-600 dark:text-gray-400">Attractivité</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 italic mt-1">(préventif)</div>
+            </div>
+
+            <!-- Row 2: Moyen -->
+            <div class="flex items-center justify-center font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700/50 rounded-lg p-4">
+              Moyen
+            </div>
+            <div class="p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-2 border-blue-300 dark:border-blue-700 rounded-xl text-center">
+              <div class="text-lg font-black text-blue-600 dark:text-blue-400 mb-2">🟡 Levier 3</div>
+              <div class="text-gray-700 dark:text-gray-300 font-semibold">Transport santé</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 italic mt-1">(palliatif)</div>
+            </div>
+            <div class="p-6 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl text-center">
+              <div class="text-gray-600 dark:text-gray-400">Communication</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 italic mt-1">(soutien)</div>
+            </div>
+            <div class="p-6 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl text-center">
+              <div class="text-gray-600 dark:text-gray-400">Veille territoriale</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 italic mt-1">(monitoring)</div>
             </div>
           </div>
-          <div class="priority-matrix__label priority-matrix__label--x">TEMPORALITÉ</div>
+        </div>
+
+        <!-- X-axis label -->
+        <div class="text-center mt-4 text-sm font-bold text-gray-500 dark:text-gray-400">
+          TEMPORALITÉ
         </div>
       </div>
     </div>
   </section>
 
   <!-- Recommandations Section -->
-  <section class="section" style="background: var(--card);">
-    <div class="container">
-      <div class="recommendations-section">
-        <h2 class="recommendations-section__title">Recommandations par profil territorial</h2>
-        
-        <div class="recommendation-cards">
-          <div class="recommendation-card recommendation-card--critical">
-            <div class="recommendation-card__icon">🔴</div>
-            <h3 class="recommendation-card__title">Double vulnérabilité</h3>
-            <p class="recommendation-card__subtitle">(APL bas + %65+ élevé)</p>
-            <ul class="recommendation-card__list">
-              <li><strong>Priorité 1 :</strong> Renforts mobiles MG (consultations avancées)</li>
-              <li><strong>Priorité 2 :</strong> Transport à la demande pour les 65+</li>
-              <li><strong>Priorité 3 :</strong> Incitations installation MSP</li>
+  <section class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-black text-center mb-16 text-gray-900 dark:text-white">
+        Recommandations par profil territorial
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Card 1: Double vulnérabilité -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border-2 border-red-300 dark:border-red-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="text-5xl">🔴</div>
+              <div>
+                <h3 class="text-2xl font-black text-gray-900 dark:text-white">Double vulnérabilité</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 italic">(APL bas + %65+ élevé)</p>
+              </div>
+            </div>
+            
+            <ul class="space-y-3 mb-6">
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-red-600 dark:text-red-400 flex-shrink-0">1.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 1 :</strong> Renforts mobiles MG (consultations avancées)</span>
+              </li>
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-red-600 dark:text-red-400 flex-shrink-0">2.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 2 :</strong> Transport à la demande pour les 65+</span>
+              </li>
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-red-600 dark:text-red-400 flex-shrink-0">3.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 3 :</strong> Incitations installation MSP</span>
+              </li>
             </ul>
-            <div class="recommendation-card__example">
-              <strong>Ex:</strong> Creuse, Lot, Cantal
+            
+            <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                <strong class="text-gray-900 dark:text-white">Ex:</strong> Creuse, Lot, Cantal
+              </p>
             </div>
           </div>
+        </div>
 
-          <div class="recommendation-card recommendation-card--warning">
-            <div class="recommendation-card__icon">🟠</div>
-            <h3 class="recommendation-card__title">APL faible, pop. jeune</h3>
-            <p class="recommendation-card__subtitle">(Avant que la démographie évolue)</p>
-            <ul class="recommendation-card__list">
-              <li><strong>Priorité 1 :</strong> Incitations installation MG (MSP)</li>
-              <li><strong>Priorité 2 :</strong> Terrains de stage pour internes</li>
-              <li><strong>Priorité 3 :</strong> Anticipation vieillissement</li>
+        <!-- Card 2: APL faible, pop. jeune -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border-2 border-orange-300 dark:border-orange-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="text-5xl">🟠</div>
+              <div>
+                <h3 class="text-2xl font-black text-gray-900 dark:text-white">APL faible, pop. jeune</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 italic">(Avant que la démographie évolue)</p>
+              </div>
+            </div>
+            
+            <ul class="space-y-3 mb-6">
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-orange-600 dark:text-orange-400 flex-shrink-0">1.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 1 :</strong> Incitations installation MG (MSP)</span>
+              </li>
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-orange-600 dark:text-orange-400 flex-shrink-0">2.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 2 :</strong> Terrains de stage pour internes</span>
+              </li>
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-orange-600 dark:text-orange-400 flex-shrink-0">3.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 3 :</strong> Anticipation vieillissement</span>
+              </li>
             </ul>
-            <div class="recommendation-card__example">
-              <strong>Ex:</strong> Zones périurbaines en développement
+            
+            <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                <strong class="text-gray-900 dark:text-white">Ex:</strong> Zones périurbaines en développement
+              </p>
             </div>
           </div>
+        </div>
 
-          <div class="recommendation-card recommendation-card--watch">
-            <div class="recommendation-card__icon">🟡</div>
-            <h3 class="recommendation-card__title">APL correcte, pop. âgée</h3>
-            <p class="recommendation-card__subtitle">(Surveiller et maintenir)</p>
-            <ul class="recommendation-card__list">
-              <li><strong>Priorité 1 :</strong> Prévenir départs à la retraite MG</li>
-              <li><strong>Priorité 2 :</strong> Télé-expertise pour suivi chronique</li>
-              <li><strong>Priorité 3 :</strong> Coordination parcours de soins</li>
+        <!-- Card 3: APL correcte, pop. âgée -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border-2 border-yellow-300 dark:border-yellow-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="text-5xl">🟡</div>
+              <div>
+                <h3 class="text-2xl font-black text-gray-900 dark:text-white">APL correcte, pop. âgée</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 italic">(Surveiller et maintenir)</p>
+              </div>
+            </div>
+            
+            <ul class="space-y-3 mb-6">
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-yellow-600 dark:text-yellow-400 flex-shrink-0">1.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 1 :</strong> Prévenir départs à la retraite MG</span>
+              </li>
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-yellow-600 dark:text-yellow-400 flex-shrink-0">2.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 2 :</strong> Télé-expertise pour suivi chronique</span>
+              </li>
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-yellow-600 dark:text-yellow-400 flex-shrink-0">3.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 3 :</strong> Coordination parcours de soins</span>
+              </li>
             </ul>
-            <div class="recommendation-card__example">
-              <strong>Ex:</strong> Territoires littoraux avec retraités
+            
+            <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                <strong class="text-gray-900 dark:text-white">Ex:</strong> Territoires littoraux avec retraités
+              </p>
             </div>
           </div>
+        </div>
 
-          <div class="recommendation-card recommendation-card--stable">
-            <div class="recommendation-card__icon">🟢</div>
-            <h3 class="recommendation-card__title">Situation stable</h3>
-            <p class="recommendation-card__subtitle">(APL correcte + pop. jeune)</p>
-            <ul class="recommendation-card__list">
-              <li><strong>Priorité 1 :</strong> Maintenir attractivité territoriale</li>
-              <li><strong>Priorité 2 :</strong> Veille sur évolution démographique</li>
-              <li><strong>Priorité 3 :</strong> Prévention et éducation à la santé</li>
+        <!-- Card 4: Situation stable -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border-2 border-green-300 dark:border-green-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="text-5xl">🟢</div>
+              <div>
+                <h3 class="text-2xl font-black text-gray-900 dark:text-white">Situation stable</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 italic">(APL correcte + pop. jeune)</p>
+              </div>
+            </div>
+            
+            <ul class="space-y-3 mb-6">
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-green-600 dark:text-green-400 flex-shrink-0">1.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 1 :</strong> Maintenir attractivité territoriale</span>
+              </li>
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-green-600 dark:text-green-400 flex-shrink-0">2.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 2 :</strong> Veille sur évolution démographique</span>
+              </li>
+              <li class="flex gap-3 text-gray-700 dark:text-gray-300">
+                <span class="font-bold text-green-600 dark:text-green-400 flex-shrink-0">3.</span>
+                <span><strong class="text-gray-900 dark:text-white">Priorité 3 :</strong> Prévention et éducation à la santé</span>
+              </li>
             </ul>
-            <div class="recommendation-card__example">
-              <strong>Ex:</strong> Grandes métropoles, zones dynamiques
+            
+            <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                <strong class="text-gray-900 dark:text-white">Ex:</strong> Grandes métropoles, zones dynamiques
+              </p>
             </div>
           </div>
         </div>
@@ -336,88 +508,100 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Conclusion Section -->
-  <section class="section">
-    <div class="container">
-      <div class="conclusion-card">
-        <h2 class="conclusion-card__title">Conclusion</h2>
-        <div class="conclusion-card__content">
-          <div class="conclusion-card__text">
-            <p>
-              L'inégalité d'accès aux soins en France <strong>n'est pas une fatalité</strong>. 
-              Elle peut être mesurée, cartographiée et, surtout, <strong>corrigée</strong> 
-              par des actions ciblées et adaptées à chaque territoire.
-            </p>
-            <p>
-              En croisant APL MG et vieillissement, nous avons identifié les zones de 
-              <strong>double vulnérabilité</strong> où l'action est la plus urgente. 
-              Les trois leviers proposés (renforts mobiles, incitations, transport) 
-              sont <strong>complémentaires</strong> et peuvent être déployés rapidement.
-            </p>
-            <p>
-              <strong>L'objectif :</strong> ne pas attendre que la situation devienne critique, 
-              mais <strong>agir maintenant</strong> pour garantir un accès équitable aux soins 
-              sur l'ensemble du territoire français.
-            </p>
-          </div>
+  <section class="py-20 bg-gradient-to-br from-purple-600 via-pink-600 to-red-600 text-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-black mb-8">Conclusion</h2>
+      </div>
 
-          <div class="conclusion-card__cta">
-            <h3 class="conclusion-card__cta-title">Et maintenant ?</h3>
-            <p class="conclusion-card__cta-text">
-              Ce travail peut servir de base pour un <strong>diagnostic territorial</strong> 
-              ou un <strong>contrat local de santé</strong>. 
-              N'hésitez pas à explorer les données et à adapter ces recommandations à votre contexte local.
-            </p>
-            <div class="conclusion-card__cta-buttons">
-              <a href="/territoires" class="btn btn--primary">
-                Revoir les territoires
-              </a>
-              <a href="/" class="btn btn--secondary">
-                Retour à l'accueil
-              </a>
-            </div>
-          </div>
+      <div class="space-y-6 text-lg leading-relaxed mb-12">
+        <p class="text-white/90">
+          L'inégalité d'accès aux soins en France <strong class="text-white">n'est pas une fatalité</strong>. 
+          Elle peut être mesurée, cartographiée et, surtout, <strong class="text-white">corrigée</strong> 
+          par des actions ciblées et adaptées à chaque territoire.
+        </p>
+        <p class="text-white/90">
+          En croisant APL MG et vieillissement, nous avons identifié les zones de 
+          <strong class="text-white">double vulnérabilité</strong> où l'action est la plus urgente. 
+          Les trois leviers proposés (renforts mobiles, incitations, transport) 
+          sont <strong class="text-white">complémentaires</strong> et peuvent être déployés rapidement.
+        </p>
+        <p class="text-white/90">
+          <strong class="text-white">L'objectif :</strong> ne pas attendre que la situation devienne critique, 
+          mais <strong class="text-white">agir maintenant</strong> pour garantir un accès équitable aux soins 
+          sur l'ensemble du territoire français.
+        </p>
+      </div>
+
+      <!-- CTA Box -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+        <h3 class="text-2xl font-black mb-4">Et maintenant ?</h3>
+        <p class="text-white/90 mb-6 leading-relaxed">
+          Ce travail peut servir de base pour un <strong class="text-white">diagnostic territorial</strong> 
+          ou un <strong class="text-white">contrat local de santé</strong>. 
+          N'hésitez pas à explorer les données et à adapter ces recommandations à votre contexte local.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="/territoires" class="px-8 py-4 bg-white text-purple-600 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-xl">
+            Revoir les territoires
+          </a>
+          <a href="/" class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300 hover:scale-105">
+            Retour à l'accueil
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Sources Section -->
-  <section class="section" style="background: var(--card);">
-    <div class="container">
-      <div class="sources-section">
-        <h2 class="sources-section__title">Sources & références</h2>
-        
-        <div class="sources-grid">
-          <div class="source-card">
-            <h4 class="source-card__title">📊 Données APL MG</h4>
-            <p class="source-card__text">
-              Indicateur d'accessibilité potentielle localisée aux médecins généralistes. 
-              Publication DREES (Direction de la Recherche, des Études, de l'Évaluation et des Statistiques).
-            </p>
-          </div>
+  <section class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-black text-center mb-16 text-gray-900 dark:text-white">
+        Sources & références
+      </h2>
 
-          <div class="source-card">
-            <h4 class="source-card__title">📈 Données démographiques</h4>
-            <p class="source-card__text">
-              Structure de la population par âge. Source : INSEE (Institut National de la Statistique 
-              et des Études Économiques), recensement de la population.
-            </p>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Source 1 -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <h4 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+            <span>📊</span> Données APL MG
+          </h4>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Indicateur d'accessibilité potentielle localisée aux médecins généralistes. 
+            Publication DREES (Direction de la Recherche, des Études, de l'Évaluation et des Statistiques).
+          </p>
+        </div>
 
-          <div class="source-card">
-            <h4 class="source-card__title">🗺️ Géométries</h4>
-            <p class="source-card__text">
-              Fonds de carte des départements et communes. Source : IGN, Admin Express COG (version CARTO).
-            </p>
-          </div>
+        <!-- Source 2 -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <h4 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+            <span>📈</span> Données démographiques
+          </h4>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Structure de la population par âge. Source : INSEE (Institut National de la Statistique 
+            et des Études Économiques), recensement de la population.
+          </p>
+        </div>
 
-          <div class="source-card">
-            <h4 class="source-card__title">🎓 Cadre du projet</h4>
-            <p class="source-card__text">
-              Open Data University · Fondation Roche · Défi "Santé et Territoires" · SAE 303 · 
-              MMI Montbéliard · Octobre 2025
-            </p>
-          </div>
+        <!-- Source 3 -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <h4 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+            <span>🗺️</span> Géométries
+          </h4>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Fonds de carte des départements et communes. Source : IGN, Admin Express COG (version CARTO).
+          </p>
+        </div>
+
+        <!-- Source 4 -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <h4 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+            <span>🎓</span> Cadre du projet
+          </h4>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Open Data University · Fondation Roche · Défi "Santé et Territoires" · SAE 303 · 
+            MMI Montbéliard · Octobre 2025
+          </p>
         </div>
       </div>
     </div>

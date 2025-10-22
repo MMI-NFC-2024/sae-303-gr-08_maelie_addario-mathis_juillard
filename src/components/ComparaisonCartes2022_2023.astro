@@ -1,14 +1,12 @@
 ---
 import PlotFigure from './PlotFigure.astro';
 import { readFile } from 'fs/promises';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { join } from 'path';
 import aplCommunes from '../assets/apl_communes (1).json';
 import aplCommunes2022 from '../assets/apl_communes_2022_from_excel.json';
 
-// Charger le GeoJSON des départements
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const geoJsonPath = join(__dirname, '../assets/departements.geojson');
+// Charger le GeoJSON des départements depuis le dossier public
+const geoJsonPath = join(process.cwd(), 'public/departements.geojson');
 const departementsGeoJSON = JSON.parse(await readFile(geoJsonPath, 'utf-8'));
 
 // Préparer les données 2022

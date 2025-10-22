@@ -1,15 +1,13 @@
 ---
 import PlotFigure from './PlotFigure.astro';
 import { readFile } from 'fs/promises';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { join } from 'path';
 
 // Import des données démographiques
 import demographie from '../assets/demographie_dep (1).json';
 
-// Charger le GeoJSON en utilisant fs
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const geoJsonPath = join(__dirname, '../assets/departements.geojson');
+// Charger le GeoJSON depuis le dossier public
+const geoJsonPath = join(process.cwd(), 'public/departements.geojson');
 const departementsGeoJSON = JSON.parse(await readFile(geoJsonPath, 'utf-8'));
 
 // Enrichir le GeoJSON avec les données démographiques
