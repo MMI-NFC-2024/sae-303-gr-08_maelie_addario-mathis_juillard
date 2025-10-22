@@ -1,63 +1,105 @@
 ---
-// src/layouts/Layout.astro
-const { title = "Open Data University — Mini-site", description = "" } = Astro.props;
----
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="preconnect" href="https://observablehq.com" />
-    <link rel="preconnect" href="https://api.observablehq.com" />
-    <style>
-      :root{--ink:#0f172a;--muted:#475569;--line:#e2e8f0;--bg:#ffffff;--chip:#f1f5f9}
-      html,body{height:100%}
-      body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);margin:0}
-      a{color:#0ea5e9;text-decoration:none}
-      a:hover{text-decoration:underline}
-      .container{max-width:1100px;margin-inline:auto;padding:24px}
-      header{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:10}
-      nav{display:flex;gap:16px;align-items:center;justify-content:space-between;min-height:64px}
-      .navbrand{font-weight:700;letter-spacing:.2px}
-      footer{border-top:1px solid var(--line);margin-top:56px;padding:24px 0;color:var(--muted);font-size:14px}
-      h1{font-size:clamp(28px,2.6vw,40px);margin:.4rem 0 1rem}
-      h2{font-size:clamp(22px,2vw,28px);margin:2.2rem 0 .6rem}
-      p.lead{color:var(--muted);font-size:18px;max-width:70ch}
-      .grid{display:grid;gap:24px}
-      @media(min-width:900px){.grid-2{grid-template-columns:1.1fr .9fr}}
-      .card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
-      .card > header{padding:14px 16px;border-bottom:1px solid var(--line);font-weight:600}
-      figure{margin:0}
-      figcaption{padding:10px 14px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;background:var(--chip)}
-      iframe{display:block;width:100%;border:0;background:#fff}
-      .chips{display:flex;gap:8px;flex-wrap:wrap;margin:.6rem 0}
-      .chip{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:12px;color:#0f172a}
-      .kbd{font-family:ui-monospace,Consolas,Monaco,monospace;background:var(--chip);padding:2px 6px;border-radius:6px;border:1px solid var(--line)}
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <nav>
-          <div class="navbrand">Open Data University — Mini-site</div>
-          <div class="chips">
-            <span class="chip">Observable</span>
-            <span class="chip">Dataviz</span>
-            <span class="chip">Astro</span>
-          </div>
-        </nav>
-      </div>
-    </header>
+interface Props {
+  title?: string;
+  description?: string;
+}
 
-    <main class="container">
+const { title = "Santé & Territoires | SAE 303", description = "Là où l'âge avance plus vite que l'accès aux soins" } = Astro.props;
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body class="font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold hover:opacity-80 transition-opacity">
+            <span class="bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">Santé</span>
+            <span class="text-gray-900 dark:text-white">& Territoires</span>
+          </a>
+
+          <!-- Desktop Menu -->
+          <ul class="hidden md:flex items-center space-x-1">
+            <li><a href="/" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Accueil</a></li>
+            <li><a href="/contexte" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Contexte</a></li>
+            <li><a href="/analyse" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Analyse</a></li>
+            <li><a href="/territoires" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Territoires</a></li>
+            <li><a href="/actions" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400 transition-all">Actions</a></li>
+          </ul>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+        <div class="px-4 py-3 space-y-1">
+          <a href="/" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400">Accueil</a>
+          <a href="/contexte" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400">Contexte</a>
+          <a href="/analyse" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400">Analyse</a>
+          <a href="/territoires" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400">Territoires</a>
+          <a href="/actions" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400">Actions</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="min-h-screen">
       <slot />
     </main>
 
-    <footer>
-      <div class="container">
-        Projet étudiant — MMI Montbéliard. Données ouvertes, visualisations reproductibles.
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 class="text-lg font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent mb-3">SAE 303 - Groupe 8</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Santé & Territoires : identifier les communes où la double vulnérabilité s'accumule.</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent mb-3">Auteurs</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Maëlie ADDARIO & Mathis JUILLARD</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">MMI2 CRÉA 1 — Octobre 2025</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent mb-3">Sources</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">APL MG · INSEE · IGN</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Open Data University</p>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
+          <p class="text-sm text-gray-500 dark:text-gray-500">© 2025 SAE 303 - Tous droits réservés</p>
+        </div>
       </div>
     </footer>
+
+    <script>
+      // Mobile menu toggle
+      const button = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      
+      button?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+      });
+    </script>
   </body>
 </html>

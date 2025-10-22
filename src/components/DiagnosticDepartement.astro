@@ -1,0 +1,140 @@
+---
+import PlotFigure from './PlotFigure.astro';
+import aplCommunes from '../assets/apl_communes (1).json';
+import demographie from '../assets/demographie_dep (1).json';
+
+// Préparer les données par département pour 2023
+const aplData = aplCommunes
+  .filter((d: any) => d.annee === 2023)
+  .reduce((acc: any, d: any) => {
+    const dept = String(d.code_dept).padStart(2, '0');
+    if (!acc[dept]) acc[dept] = [];
+    acc[dept].push(+d.apl_total);
+    return acc;
+  }, {});
+
+const departementsData = Object.entries(aplData).map(([code_dept, values]: [string, any]) => {
+  const sorted = values.sort((a: number, b: number) => a - b);
+  const demo = demographie.find((d: any) => String(d.code_dept).padStart(2, '0') === code_dept);
+  
+  return {
+    code_dept,
+    apl_median: sorted[Math.floor(sorted.length / 2)],
+    apl_min: sorted[0],
+    apl_max: sorted[sorted.length - 1],
+    pct65: demo ? demo.pct65 : null,
+    nom: `Département ${code_dept}`
+  };
+}).sort((a, b) => a.code_dept.localeCompare(b.code_dept));
+---
+
+<div class="card">
+  <div style="padding: 2rem;">
+    <div style="margin-bottom: 2rem;">
+      <label for="dept-select" style="display: block; font-weight: bold; margin-bottom: 0.5rem; color: var(--text);">
+        📍 Sélectionnez un département
+      </label>
+      <select 
+        id="dept-select" 
+        style="width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 8px; font-size: 1rem; background: var(--bg); color: var(--text);"
+      >
+        <option value="">-- Choisir un département --</option>
+        {departementsData.map(d => (
+          <option value={d.code_dept}>{d.code_dept} - {d.nom}</option>
+        ))}
+      </select>
+    </div>
+
+    <div id="diagnostic-content" style="display: none;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+        <div class="metric-card">
+          <div class="metric-label">APL MG médiane</div>
+          <div class="metric-value" id="metric-apl">--</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">APL min</div>
+          <div class="metric-value" id="metric-min">--</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">APL max</div>
+          <div class="metric-value" id="metric-max">--</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">% 65 ans et +</div>
+          <div class="metric-value" id="metric-pct65">--</div>
+        </div>
+      </div>
+
+      <div id="diagnostic-alert" style="margin-top: 1.5rem; padding: 1rem; border-radius: 8px; display: none;"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .metric-card {
+    padding: 1rem;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .metric-label {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-value {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--accent);
+  }
+</style>
+
+<script type="module" define:vars={{ departementsData }}>
+  const select = document.getElementById('dept-select');
+  const content = document.getElementById('diagnostic-content');
+  const alert = document.getElementById('diagnostic-alert');
+
+  select.addEventListener('change', (e) => {
+    const code = e.target.value;
+    if (!code) {
+      content.style.display = 'none';
+      return;
+    }
+
+    const dept = departementsData.find(d => d.code_dept === code);
+    if (!dept) return;
+
+    content.style.display = 'block';
+
+    document.getElementById('metric-apl').textContent = dept.apl_median.toFixed(2);
+    document.getElementById('metric-min').textContent = dept.apl_min.toFixed(2);
+    document.getElementById('metric-max').textContent = dept.apl_max.toFixed(2);
+    document.getElementById('metric-pct65').textContent = dept.pct65 ? `${(dept.pct65 * 100).toFixed(1)}%` : 'n.d.';
+
+    // Analyse de vulnérabilité
+    const isLowAPL = dept.apl_median < 4.5;
+    const isHighAging = dept.pct65 > 0.22;
+
+    if (isLowAPL && isHighAging) {
+      alert.style.display = 'block';
+      alert.style.background = '#fee';
+      alert.style.border = '2px solid #ef4444';
+      alert.innerHTML = '<strong>⚠️ Double vulnérabilité détectée</strong><br>Ce département cumule un faible APL MG et une population âgée élevée.';
+    } else if (isLowAPL) {
+      alert.style.display = 'block';
+      alert.style.background = '#fef3cd';
+      alert.style.border = '2px solid #f59e0b';
+      alert.innerHTML = '<strong>⚡ Accès difficile</strong><br>APL MG inférieur à la moyenne nationale.';
+    } else if (isHighAging) {
+      alert.style.display = 'block';
+      alert.style.background = '#dbeafe';
+      alert.style.border = '2px solid #3b82f6';
+      alert.innerHTML = '<strong>👴 Population vieillissante</strong><br>Part des 65+ supérieure à la moyenne.';
+    } else {
+      alert.style.display = 'none';
+    }
+  });
+</script>

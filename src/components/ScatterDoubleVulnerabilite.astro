@@ -1,0 +1,77 @@
+---
+import PlotFigure from './PlotFigure.astro';
+import aplCommunes from '../assets/apl_communes (1).json';
+import demographie from '../assets/demographie_dep (1).json';
+
+// Préparer les données APL par département
+const aplData = aplCommunes
+  .filter((d: any) => d.annee === 2023)
+  .reduce((acc: any, d: any) => {
+    const dept = String(d.code_dept).padStart(2, '0');
+    if (!acc[dept]) acc[dept] = [];
+    acc[dept].push(+d.apl_total);
+    return acc;
+  }, {});
+
+const aplMedian = Object.entries(aplData).map(([code_dept, values]: [string, any]) => ({
+  code_dept,
+  apl_median: values.sort((a: number, b: number) => a - b)[Math.floor(values.length / 2)]
+}));
+
+// Croiser avec démographie
+const scatterData = demographie
+  .map((d: any) => {
+    const apl = aplMedian.find(a => a.code_dept === String(d.code_dept).padStart(2, '0'));
+    return {
+      code_dept: d.code_dept,
+      pct65: d.pct65,
+      apl_median: apl ? apl.apl_median : null
+    };
+  })
+  .filter((d: any) => d.pct65 != null && d.apl_median != null);
+---
+
+<PlotFigure 
+  title="Double vulnérabilité : APL MG vs % de 65 ans et +"
+  description="Chaque point = un département. Bas-gauche = priorité (APL faible + pop. âgée)"
+>
+  <div id="scatter-double-vulnerabilite"></div>
+</PlotFigure>
+
+<script type="module" define:vars={{ scatterData }}>
+  import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+  const chart = Plot.plot({
+    width: 900,
+    height: 600,
+    marginLeft: 60,
+    marginBottom: 50,
+    x: {
+      label: "APL MG (plus bas = accès difficile)",
+      grid: true
+    },
+    y: {
+      label: "% de 65 ans et +",
+      grid: true,
+      tickFormat: d => `${(d * 100).toFixed(0)}%`
+    },
+    marks: [
+      Plot.dot(scatterData, {
+        x: "apl_median",
+        y: "pct65",
+        r: 5,
+        fill: "#3b82f6",
+        opacity: 0.7,
+        title: d => `Dept ${d.code_dept}\nAPL: ${d.apl_median.toFixed(2)}\n% 65+: ${(d.pct65 * 100).toFixed(1)}%`
+      }),
+      Plot.linearRegressionY(scatterData, {
+        x: "apl_median",
+        y: "pct65",
+        stroke: "#ef4444",
+        strokeWidth: 2
+      })
+    ]
+  });
+
+  document.getElementById('scatter-double-vulnerabilite').appendChild(chart);
+</script>

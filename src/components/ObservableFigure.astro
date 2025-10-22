@@ -1,0 +1,30 @@
+---
+const { id, cells = "", title = "", height = 560, caption = "" } = Astro.props;
+const query = cells ? `?cells=${encodeURIComponent(cells)}` : "";
+const src = `https://observablehq.com/embed/@mmi-nfc-2024/${id}${query}`;
+---
+<figure class="bg-white rounded-2xl border-2 border-slate-200 overflow-hidden shadow-sm my-6">
+  {title && (
+    <figcaption class="px-6 py-4 bg-slate-50 border-b-2 border-slate-200">
+      <h3 class="font-display font-bold text-medical-navy text-lg">
+        {title}
+      </h3>
+    </figcaption>
+  )}
+  
+  <div class="relative">
+    <iframe
+      src={src}
+      loading="lazy"
+      style={`display:block;width:100%;height:${height}px;border:0;background:#fff`}
+      allow="clipboard-write; fullscreen; xr-spatial-tracking; gyroscope; accelerometer"
+      title={title || "Visualisation Observable"}
+    ></iframe>
+  </div>
+  
+  {caption && (
+    <figcaption class="px-6 py-4 bg-slate-50 border-t-2 border-slate-200 text-sm text-slate-700 leading-relaxed">
+      {caption}
+    </figcaption>
+  )}
+</figure>

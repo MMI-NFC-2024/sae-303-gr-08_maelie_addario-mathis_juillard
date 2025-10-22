@@ -1,21 +1,289 @@
 ---
-import PlotFigure from "../components/PlotFigure.astro";
-import Layout from "../layouts/Layout.astro";
-import * as Plot from "@observablehq/plot";
-import penguins from "../assets/penguins.json";
+import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
-  <h1 class="text-2xl">Test Astro et Plot (Observablehq)</h1>
-  <PlotFigure
-    options={{
-      marks: [
-        Plot.dot(penguins, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
+<Layout title="Santé & Territoires | SAE 303">
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-20 md:py-32 overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-primary-400 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-secondary-400 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Tags -->
+        <div class="flex items-center justify-center gap-3 mb-6 animate-fade-in-up">
+          <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm">
+            SAE 303
+          </span>
+          <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg">
+            Groupe 8
+          </span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-5xl md:text-7xl font-black mb-6 animate-fade-in-up" style="animation-delay: 0.1s">
+          <span class="gradient-text">Santé & Territoires</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-8 animate-fade-in-up" style="animation-delay: 0.2s">
+          Là où l'âge avance plus vite que l'accès aux soins
+        </p>
+
+        <!-- Description -->
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.3s">
+          Identifier les communes où la double vulnérabilité (APL MG faible + population âgée) s'accumule, 
+          et comprendre quelles actions prioriser localement pour améliorer l'accès aux soins.
+        </p>
+
+        <!-- Meta -->
+        <div class="flex items-center justify-center gap-3 text-sm md:text-base text-gray-600 dark:text-gray-400 mb-10 animate-fade-in-up" style="animation-delay: 0.4s">
+          <span><strong class="font-semibold text-gray-900 dark:text-white">Maëlie ADDARIO</strong> & <strong class="font-semibold text-gray-900 dark:text-white">Mathis JUILLARD</strong></span>
+          <span class="text-gray-400 dark:text-gray-600">•</span>
+          <span>MMI2 CRÉA 1 — Octobre 2025</span>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.5s">
+          <a href="#problematique" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" class="animate-bounce">
+              <path d="M10 4v12m0 0l-4-4m4 4l4-4"/>
+            </svg>
+            Découvrir le projet
+          </a>
+          <a href="/contexte" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+            Voir les données
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problématique Section -->
+  <section id="problematique" class="py-20 md:py-28 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
+          La problématique
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400">
+          En France, l'accès aux soins n'est pas qu'une question de kilomètres
+        </p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Card 1 -->
+        <div class="group p-8 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+          <div class="text-5xl mb-4">🏥</div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            Des déserts médicaux qui s'étendent
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Dans certains territoires, les médecins généralistes se raréfient. 
+            L'APL MG mesure cette accessibilité théorique aux soins de premiers recours.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="group p-8 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+          <div class="text-5xl mb-4">👴</div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            Une population qui vieillit
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            La part des 65 ans et plus explose dans certains départements. 
+            Cette population âgée nécessite davantage de soins et de suivi médical régulier.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="group p-8 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+          <div class="text-5xl mb-4">⚠️</div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            La double vulnérabilité
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Quand ces deux dynamiques se cumulent, on parle de double vulnérabilité. 
+            C'est là que l'action est prioritaire.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="group p-8 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+          <div class="text-5xl mb-4">🎯</div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+            Cibler pour agir
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Notre objectif est d'identifier ces territoires et proposer des leviers d'action concrets 
+            pour les collectivités locales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Démarche Section -->
+  <section class="py-20 md:py-28 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
+          Notre démarche
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400">
+          Un diagnostic territorial en 4 étapes
+        </p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="max-w-4xl mx-auto space-y-8">
+        <!-- Step 1 -->
+        <div class="flex gap-6 group">
+          <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white text-2xl font-black shadow-lg group-hover:scale-110 transition-transform duration-300">
+            1
+          </div>
+          <div class="flex-1 bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg group-hover:shadow-xl transition-all duration-300">
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
+              Contextualiser
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Cartographier l'APL MG et le vieillissement par département pour visualiser les zones à risque.
+            </p>
+            <a href="/contexte" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-semibold transition-colors">
+              Voir les cartes
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex gap-6 group">
+          <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-secondary-500 to-secondary-600 flex items-center justify-center text-white text-2xl font-black shadow-lg group-hover:scale-110 transition-transform duration-300">
+            2
+          </div>
+          <div class="flex-1 bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg group-hover:shadow-xl transition-all duration-300">
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
+              Analyser
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Croiser APL MG et part des 65+ pour repérer les départements en double vulnérabilité.
+            </p>
+            <a href="/analyse" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-semibold transition-colors">
+              Voir l'analyse
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex gap-6 group">
+          <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-2xl font-black shadow-lg group-hover:scale-110 transition-transform duration-300">
+            3
+          </div>
+          <div class="flex-1 bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg group-hover:shadow-xl transition-all duration-300">
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
+              Explorer
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Obtenir un diagnostic détaillé avec l'évolution temporelle de l'APL MG.
+            </p>
+            <a href="/territoires" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-semibold transition-colors">
+              Explorer les territoires
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex gap-6 group">
+          <div class="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white text-2xl font-black shadow-lg group-hover:scale-110 transition-transform duration-300">
+            4
+          </div>
+          <div class="flex-1 bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-lg group-hover:shadow-xl transition-all duration-300">
+            <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
+              Agir
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Découvrir 3 leviers concrets pour améliorer l'accès aux soins.
+            </p>
+            <a href="/actions" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-semibold transition-colors">
+              Voir les actions
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-20 md:py-28 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white">
+          Chiffres clés
+        </h2>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div class="text-center p-8 bg-gradient-to-br from-primary-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-primary-200 dark:border-gray-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+          <div class="text-5xl font-black gradient-text mb-3">2023</div>
+          <div class="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">Année de référence</div>
+        </div>
+
+        <div class="text-center p-8 bg-gradient-to-br from-secondary-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-secondary-200 dark:border-gray-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+          <div class="text-5xl font-black gradient-text mb-3">101</div>
+          <div class="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">Départements analysés</div>
+        </div>
+
+        <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-blue-200 dark:border-gray-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+          <div class="text-5xl font-black gradient-text mb-3">~35K</div>
+          <div class="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">Communes étudiées</div>
+        </div>
+
+        <div class="text-center p-8 bg-gradient-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-green-200 dark:border-gray-700 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+          <div class="text-5xl font-black gradient-text mb-3">APL MG</div>
+          <div class="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">Indicateur clé</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 md:py-28 bg-gradient-to-br from-primary-600 via-primary-500 to-secondary-500 dark:from-primary-700 dark:via-primary-600 dark:to-secondary-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+          Prêt à explorer les données ?
+        </h2>
+        <p class="text-xl text-white/90 mb-10 leading-relaxed">
+          Découvrez les cartes interactives et les recommandations pour agir sur votre territoire.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/contexte" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-primary-600 bg-white hover:bg-gray-50 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 transition-all duration-200">
+            Commencer
+          </a>
+          <a href="/territoires" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white/50 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 transition-all duration-200">
+            Mon département
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>

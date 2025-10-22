@@ -1,0 +1,172 @@
+---
+import PlotFigure from './PlotFigure.astro';
+import { readFile } from 'fs/promises';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import aplCommunes from '../assets/apl_communes (1).json';
+import aplCommunes2022 from '../assets/apl_communes_2022_from_excel.json';
+
+// Charger le GeoJSON des départements
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const geoJsonPath = join(__dirname, '../assets/departements.geojson');
+const departementsGeoJSON = JSON.parse(await readFile(geoJsonPath, 'utf-8'));
+
+// Préparer les données 2022
+const aplData2022 = aplCommunes2022.reduce((acc: any, d: any) => {
+  const dept = String(d.code_dept).padStart(2, '0');
+  if (!acc[dept]) acc[dept] = [];
+  acc[dept].push(+d.apl_total);
+  return acc;
+}, {});
+
+const aplMedian2022 = Object.entries(aplData2022).map(([code_dept, values]: [string, any]) => ({
+  code_dept,
+  apl_median: values.sort((a: number, b: number) => a - b)[Math.floor(values.length / 2)]
+}));
+
+// Préparer les données 2023
+const aplData2023 = aplCommunes
+  .filter((d: any) => d.annee === 2023)
+  .reduce((acc: any, d: any) => {
+    const dept = String(d.code_dept).padStart(2, '0');
+    if (!acc[dept]) acc[dept] = [];
+    acc[dept].push(+d.apl_total);
+    return acc;
+  }, {});
+
+const aplMedian2023 = Object.entries(aplData2023).map(([code_dept, values]: [string, any]) => ({
+  code_dept,
+  apl_median: values.sort((a: number, b: number) => a - b)[Math.floor(values.length / 2)]
+}));
+
+// Enrichir le GeoJSON pour 2022
+const enrichedFeatures2022 = departementsGeoJSON.features.map((f: any) => {
+  const code = String(f.properties.code_dept || f.properties.code_insee || f.properties.code || '').padStart(2, '0');
+  const apl = aplMedian2022.find(a => a.code_dept === code);
+  return {
+    type: 'Feature',
+    geometry: f.geometry,
+    properties: {
+      ...f.properties,
+      code_dept: code,
+      nom: f.properties.nom || f.properties.name || code,
+      apl_median: apl ? apl.apl_median : null
+    }
+  };
+});
+
+// Enrichir le GeoJSON pour 2023
+const enrichedFeatures2023 = departementsGeoJSON.features.map((f: any) => {
+  const code = String(f.properties.code_dept || f.properties.code_insee || f.properties.code || '').padStart(2, '0');
+  const apl = aplMedian2023.find(a => a.code_dept === code);
+  return {
+    type: 'Feature',
+    geometry: f.geometry,
+    properties: {
+      ...f.properties,
+      code_dept: code,
+      nom: f.properties.nom || f.properties.name || code,
+      apl_median: apl ? apl.apl_median : null
+    }
+  };
+});
+
+const geoData2022 = {
+  type: 'FeatureCollection',
+  features: enrichedFeatures2022
+};
+
+const geoData2023 = {
+  type: 'FeatureCollection',
+  features: enrichedFeatures2023
+};
+---
+
+<PlotFigure 
+  title="Comparaison APL MG : 2022 vs 2023"
+  description="Comparez l'évolution de l'APL MG entre 2022 et 2023. Les changements de couleur révèlent les territoires en amélioration ou dégradation."
+  fullWidth
+>
+  <div style="margin-bottom: 1.5rem;">
+    <label for="annee-select" style="display: block; font-weight: bold; margin-bottom: 0.5rem; color: var(--text);">
+      📅 Sélectionnez l'année à afficher
+    </label>
+    <select 
+      id="annee-select" 
+      style="padding: 0.75rem 1rem; border: 2px solid var(--border); border-radius: 8px; font-size: 1rem; background: var(--bg); color: var(--text); cursor: pointer;"
+    >
+      <option value="2022">2022</option>
+      <option value="2023" selected>2023</option>
+    </select>
+  </div>
+
+  <div id="carte-comparaison"></div>
+
+  <div style="margin-top: 1.5rem; padding: 1rem; background: var(--card); border-radius: 8px;">
+    <h4 style="margin-bottom: 0.5rem; color: var(--text);">📊 Analyse comparative</h4>
+    <p style="font-size: 0.875rem; color: var(--muted);">
+      Changez l'année avec le sélecteur ci-dessus pour observer les évolutions. 
+      Les départements qui deviennent plus foncés voient leur APL MG baisser (dégradation de l'accès), 
+      ceux qui s'éclaircissent voient leur APL augmenter (amélioration).
+    </p>
+  </div>
+</PlotFigure>
+
+<script type="module" define:vars={{ geoData2022, geoData2023 }}>
+  import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+  const container = document.getElementById('carte-comparaison');
+  const select = document.getElementById('annee-select');
+  let currentChart = null;
+
+  function renderChart(annee) {
+    const geoData = annee === '2022' ? geoData2022 : geoData2023;
+
+    if (currentChart) {
+      currentChart.remove();
+    }
+
+    currentChart = Plot.plot({
+      width: 1100,
+      height: 900,
+      projection: {
+        type: "mercator",
+        domain: geoData
+      },
+      color: {
+        type: "quantile",
+        n: 7,
+        scheme: "blues",
+        legend: true,
+        label: "APL MG (médiane)"
+      },
+      marks: [
+        Plot.geo(geoData.features, {
+          fill: d => d.properties.apl_median,
+          stroke: "#999",
+          strokeWidth: 0.5,
+          title: d => `${d.properties.nom}\nAPL ${annee}: ${d.properties.apl_median ? d.properties.apl_median.toFixed(2) : 'n.d.'}`
+        }),
+        Plot.text(geoData.features, {
+          x: d => Plot.geoCentroid(d)[0],
+          y: d => Plot.geoCentroid(d)[1],
+          text: d => d.properties.code_dept,
+          fontSize: 10,
+          fill: "#000",
+          fontWeight: "bold"
+        })
+      ]
+    });
+
+    container.innerHTML = '';
+    container.appendChild(currentChart);
+  }
+
+  // Écouter le changement d'année
+  select.addEventListener('change', (e) => {
+    renderChart(e.target.value);
+  });
+
+  // Affichage initial (2023)
+  renderChart('2023');
+</script>

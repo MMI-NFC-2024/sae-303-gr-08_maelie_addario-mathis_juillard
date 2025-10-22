@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CarteAPL from '../components/CarteAPL.astro';
+import CarteVieillissement from '../components/CarteVieillissement.astro';
+import ComparaisonCartes2022_2023 from '../components/ComparaisonCartes2022_2023.astro';
+---
+
+<Layout title="Contexte | Santé & Territoires">
+  <!-- Header Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-6">
+          <a href="/" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Accueil</a>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+          <span class="text-gray-900 dark:text-white font-medium">Contexte</span>
+        </div>
+        
+        <!-- Title -->
+        <h1 class="text-4xl md:text-6xl font-black mb-6">
+          <span class="gradient-text">Contexte territorial</span>
+        </h1>
+        
+        <!-- Subtitle -->
+        <p class="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+          Cartographie de l'accès aux médecins généralistes et du vieillissement de la population
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="py-16 md:py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <!-- Intro Card -->
+        <div class="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 md:p-12 border border-gray-200 dark:border-gray-700 shadow-xl mb-12">
+          <h2 class="text-3xl md:text-4xl font-black mb-4 text-gray-900 dark:text-white text-center">
+            Deux dynamiques territoriales
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto leading-relaxed">
+            Pour comprendre la situation sanitaire d'un territoire, il faut croiser deux indicateurs clés :
+          </p>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- APL MG -->
+          <div class="group p-8 bg-gradient-to-br from-red-50 to-white dark:from-red-900/20 dark:to-gray-800 rounded-2xl border-2 border-red-200 dark:border-red-900/50 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+            <div class="text-5xl mb-4">🏥</div>
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+              APL MG
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <strong class="text-gray-900 dark:text-white">Accessibilité Potentielle Localisée</strong> aux Médecins Généralistes. 
+              Plus la valeur est basse, plus l'accès théorique aux soins de premier recours est difficile.
+            </p>
+          </div>
+
+          <!-- Part 65+ -->
+          <div class="group p-8 bg-gradient-to-br from-blue-50 to-white dark:from-blue-900/20 dark:to-gray-800 rounded-2xl border-2 border-blue-200 dark:border-blue-900/50 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+            <div class="text-5xl mb-4">👴</div>
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+              Part des 65 ans et +
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Pourcentage de la population âgée de 65 ans et plus. 
+              Une population âgée nécessite davantage de soins et de suivi médical régulier.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carte APL MG -->
+  <section class="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12 max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-black mb-4 text-gray-900 dark:text-white">
+            Carte 1 : Accès aux médecins généralistes
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            Cette carte montre l'<strong class="text-gray-900 dark:text-white">APL MG médiane</strong> par département. 
+            Les zones les plus sombres correspondent aux territoires où l'accès aux médecins généralistes est le plus difficile.
+          </p>
+        </div>
+
+        <!-- Carte -->
+        <CarteAPL />
+
+        <!-- Insight Box -->
+        <div class="flex gap-6 p-8 mt-12 bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl border-2 border-yellow-200 dark:border-yellow-900/50 shadow-lg">
+          <div class="text-4xl flex-shrink-0">💡</div>
+          <div>
+            <h4 class="text-xl font-bold mb-3 text-yellow-900 dark:text-yellow-400">
+              Ce qu'il faut retenir
+            </h4>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Les départements avec une APL MG faible (zones foncées) ne sont pas uniquement ruraux. 
+              L'inégalité d'accès aux soins se joue à l'échelle fine et touche aussi des zones périurbaines.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carte Vieillissement -->
+  <section class="py-16 md:py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12 max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-black mb-4 text-gray-900 dark:text-white">
+            Carte 2 : Vieillissement de la population
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            Cette carte représente la <strong class="text-gray-900 dark:text-white">part des 65 ans et plus</strong> dans chaque département. 
+            Les territoires en bleu foncé sont ceux où la population vieillit le plus rapidement.
+          </p>
+        </div>
+
+        <!-- Carte -->
+        <CarteVieillissement />
+
+        <!-- Stats Highlight -->
+        <div class="mt-12 p-8 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
+          <h4 class="text-2xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+            Top 3 des départements les plus âgés
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md">
+              <div class="text-4xl mb-3">🥇</div>
+              <div class="font-semibold text-gray-900 dark:text-white mb-2">Creuse (23)</div>
+              <div class="text-2xl font-bold gradient-text">~33% de 65+</div>
+            </div>
+            <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md">
+              <div class="text-4xl mb-3">🥈</div>
+              <div class="font-semibold text-gray-900 dark:text-white mb-2">Lot (46)</div>
+              <div class="text-2xl font-bold gradient-text">~31% de 65+</div>
+            </div>
+            <div class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-md">
+              <div class="text-4xl mb-3">🥉</div>
+              <div class="font-semibold text-gray-900 dark:text-white mb-2">Cantal (15)</div>
+              <div class="text-2xl font-bold gradient-text">~30% de 65+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparaison 2022-2023 -->
+  <section class="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12 max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-black mb-4 text-gray-900 dark:text-white">
+            Carte 3 : Évolution 2022-2023
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            Comparez l'APL MG entre 2022 et 2023 pour identifier les départements en <strong class="text-gray-900 dark:text-white">amélioration</strong> 
+            (plus clairs) ou en <strong class="text-gray-900 dark:text-white">dégradation</strong> (plus foncés).
+          </p>
+        </div>
+
+        <!-- Carte -->
+        <ComparaisonCartes2022_2023 />
+
+        <!-- Alert Box -->
+        <div class="flex gap-6 p-8 mt-12 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-2xl border-2 border-red-200 dark:border-red-900/50 shadow-lg">
+          <div class="text-4xl flex-shrink-0">⚠️</div>
+          <div>
+            <h4 class="text-xl font-bold mb-3 text-red-900 dark:text-red-400">
+              Attention aux évolutions
+            </h4>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Certains départements voient leur situation se <strong class="text-red-700 dark:text-red-400">dégrader</strong> d'année en année. 
+              Ces tendances doivent alerter les décideurs locaux pour agir avant que la situation ne devienne critique.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Section -->
+  <section class="py-16 md:py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="p-10 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl">
+          <h2 class="text-3xl md:text-4xl font-black mb-6 text-gray-900 dark:text-white">
+            Prochaine étape
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-10">
+            Maintenant que nous avons contextualisé les deux dynamiques (APL MG et vieillissement), 
+            voyons où elles se cumulent pour identifier les territoires en <strong class="text-gray-900 dark:text-white">double vulnérabilité</strong>.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/analyse" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
+              Voir l'analyse
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="/" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              Retour à l'accueil
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

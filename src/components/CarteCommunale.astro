@@ -1,0 +1,88 @@
+---
+import PlotFigure from './PlotFigure.astro';
+import { readFile } from 'fs/promises';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import aplCommunes from '../assets/apl_communes (1).json';
+
+// Charger le GeoJSON des communes
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const geoJsonPath = join(__dirname, '../assets/communes.geojson');
+const communesGeoJSON = JSON.parse(await readFile(geoJsonPath, 'utf-8'));
+
+// Préparer les données APL 2023 par commune
+const aplByCommune = aplCommunes
+  .filter((d: any) => d.annee === 2023)
+  .reduce((acc: any, d: any) => {
+    acc[d.code_commune] = +d.apl_total;
+    return acc;
+  }, {});
+
+// Enrichir le GeoJSON
+const enrichedFeatures = communesGeoJSON.features.map((f: any) => {
+  const code = f.properties.code || f.properties.insee || '';
+  const apl = aplByCommune[code];
+  
+  return {
+    type: 'Feature',
+    geometry: f.geometry,
+    properties: {
+      ...f.properties,
+      code_commune: code,
+      nom: f.properties.nom || f.properties.name || code,
+      apl: apl || null
+    }
+  };
+});
+
+const geoData = {
+  type: 'FeatureCollection',
+  features: enrichedFeatures
+};
+---
+
+<PlotFigure 
+  title="Carte communale — APL MG par commune (2023)"
+  description="Vue détaillée à l'échelle communale. Plus la couleur est foncée, plus l'APL est basse."
+  fullWidth
+>
+  <div id="carte-communale"></div>
+  <div style="margin-top: 1rem; padding: 1rem; background: var(--card); border-radius: 8px; font-size: 0.875rem;">
+    💡 <strong>Astuce :</strong> Cette carte affiche plus de 35 000 communes. Le chargement peut prendre quelques secondes.
+    Survolez une commune pour voir son APL MG.
+  </div>
+</PlotFigure>
+
+<script type="module" define:vars={{ geoData }}>
+  import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+  const chart = Plot.plot({
+    width: 1400,
+    height: 1000,
+    projection: {
+      type: "mercator",
+      domain: geoData
+    },
+    color: {
+      type: "quantile",
+      n: 9,
+      scheme: "YlOrRd",
+      reverse: true,
+      legend: true,
+      label: "APL MG"
+    },
+    marks: [
+      Plot.geo(geoData.features, {
+        fill: d => d.properties.apl,
+        stroke: "#fff",
+        strokeWidth: 0.2,
+        strokeOpacity: 0.5,
+        title: d => d.properties.apl 
+          ? `${d.properties.nom}\nAPL: ${d.properties.apl.toFixed(2)}`
+          : `${d.properties.nom}\nAPL: n.d.`
+      })
+    ]
+  });
+
+  document.getElementById('carte-communale').appendChild(chart);
+</script>

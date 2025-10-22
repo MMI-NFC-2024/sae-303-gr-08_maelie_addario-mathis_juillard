@@ -1,9 +1,68 @@
 ---
-import * as Plot from "@observablehq/plot";
-import { JSDOM } from "jsdom";
-const { options } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+  fullWidth?: boolean;
+}
 
-const plot = Plot.plot({ ...options, document: new JSDOM("").window.document });
+const { title, description, fullWidth = false } = Astro.props;
 ---
 
-<div set:html={plot.outerHTML} />
+<figure class:list={["plot-figure", { "plot-figure--full": fullWidth }]}>
+  {title && <h3 class="plot-figure__title">{title}</h3>}
+  {description && <p class="plot-figure__description">{description}</p>}
+  
+  <div class="plot-figure__container">
+    <slot />
+  </div>
+</figure>
+
+<style>
+  .plot-figure {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+    margin: var(--space-xl) 0;
+  }
+
+  .plot-figure--full {
+    width: 100%;
+  }
+
+  .plot-figure__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    color: var(--ink);
+  }
+
+  .plot-figure__description {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .plot-figure__container {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .plot-figure__container :global(svg) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .plot-figure {
+      padding: var(--space-md);
+      margin-left: calc(-1 * var(--space-md));
+      margin-right: calc(-1 * var(--space-md));
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+  }
+</style>

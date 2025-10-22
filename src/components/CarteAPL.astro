@@ -1,0 +1,87 @@
+---
+import PlotFigure from './PlotFigure.astro';
+import { readFile } from 'fs/promises';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+// Import des données côté serveur
+import aplCommunes from '../assets/apl_communes (1).json';
+
+// Charger le GeoJSON en utilisant fs
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const geoJsonPath = join(__dirname, '../assets/departements.geojson');
+const departementsGeoJSON = JSON.parse(await readFile(geoJsonPath, 'utf-8'));
+
+// Préparer les données APL par département (médiane)
+const aplData = aplCommunes
+  .filter((d: any) => d.annee === 2023)
+  .reduce((acc: any, d: any) => {
+    const dept = String(d.code_dept).padStart(2, '0');
+    if (!acc[dept]) acc[dept] = [];
+    acc[dept].push(+d.apl_total);
+    return acc;
+  }, {});
+
+const aplMedian = Object.entries(aplData).map(([code_dept, values]: [string, any]) => ({
+  code_dept,
+  apl_median: values.sort((a: number, b: number) => a - b)[Math.floor(values.length / 2)]
+}));
+
+// Enrichir le GeoJSON
+const enrichedFeatures = departementsGeoJSON.features.map((f: any) => {
+  const code = String(f.properties.code_dept || f.properties.code_insee || f.properties.code || '').padStart(2, '0');
+  const apl = aplMedian.find(a => a.code_dept === code);
+  return {
+    type: 'Feature',
+    geometry: f.geometry,
+    properties: {
+      ...f.properties,
+      code_dept: code,
+      nom: f.properties.nom || f.properties.name || code,
+      apl_median: apl ? apl.apl_median : null
+    }
+  };
+});
+
+const geoData = {
+  type: 'FeatureCollection',
+  features: enrichedFeatures
+};
+---
+
+<PlotFigure 
+  title="Carte APL MG (médiane par département) — 2023"
+  description="Plus la couleur est foncée, plus l'APL est basse et l'accès aux médecins généralistes est difficile."
+>
+  <div id="carte-apl-mg"></div>
+</PlotFigure>
+
+<script type="module" define:vars={{ geoData }}>
+  import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+  const chart = Plot.plot({
+    width: 1100,
+    height: 900,
+    projection: {
+      type: "mercator",
+      domain: geoData
+    },
+    color: {
+      type: "quantile",
+      n: 7,
+      scheme: "blues",
+      legend: true,
+      label: "APL MG (médiane)"
+    },
+    marks: [
+      Plot.geo(geoData.features, {
+        fill: d => d.properties.apl_median,
+        stroke: "#999",
+        strokeWidth: 0.5,
+        title: d => `${d.properties.nom}\nAPL: ${d.properties.apl_median ? d.properties.apl_median.toFixed(2) : 'n.d.'}`
+      })
+    ]
+  });
+
+  document.getElementById('carte-apl-mg').appendChild(chart);
+</script>

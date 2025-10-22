@@ -1,0 +1,146 @@
+---
+import PlotFigure from './PlotFigure.astro';
+import aplCommunes from '../assets/apl_communes (1).json';
+import aplCommunes2022 from '../assets/apl_communes_2022_from_excel.json';
+
+// Préparer les données d'évolution par département
+const allData = [
+  ...aplCommunes2022.map((d: any) => ({ ...d, annee: 2022 })),
+  ...aplCommunes.filter((d: any) => d.annee === 2023)
+];
+
+const evolutionByDept = allData.reduce((acc: any, d: any) => {
+  const dept = String(d.code_dept).padStart(2, '0');
+  const year = d.annee;
+  
+  if (!acc[dept]) acc[dept] = {};
+  if (!acc[dept][year]) acc[dept][year] = [];
+  
+  acc[dept][year].push(+d.apl_total);
+  return acc;
+}, {});
+
+// Calculer les médianes
+const evolutionData = Object.entries(evolutionByDept).flatMap(([code_dept, years]: [string, any]) => {
+  return Object.entries(years).map(([year, values]: [string, any]) => {
+    const sorted = values.sort((a: number, b: number) => a - b);
+    return {
+      code_dept,
+      annee: +year,
+      apl_median: sorted[Math.floor(sorted.length / 2)]
+    };
+  });
+});
+
+// Calculer la moyenne France
+const franceMoyenne = [2022, 2023].map(year => {
+  const values = evolutionData.filter(d => d.annee === year).map(d => d.apl_median);
+  const sum = values.reduce((a, b) => a + b, 0);
+  return {
+    annee: year,
+    apl_median: sum / values.length,
+    label: 'Moyenne France'
+  };
+});
+---
+
+<PlotFigure 
+  title="Évolution de l'APL MG — Département vs France"
+  description="Comparez l'évolution de votre département avec la moyenne nationale. Sélectionnez un département dans la section ci-dessus."
+>
+  <div id="evolution-chart"></div>
+</PlotFigure>
+
+<script type="module" define:vars={{ evolutionData, franceMoyenne }}>
+  import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+  let currentChart = null;
+
+  function updateChart(selectedDept) {
+    const container = document.getElementById('evolution-chart');
+    if (!container) return;
+
+    if (currentChart) {
+      currentChart.remove();
+    }
+
+    const deptData = selectedDept 
+      ? evolutionData.filter(d => d.code_dept === selectedDept)
+      : [];
+
+    if (deptData.length === 0 && !selectedDept) {
+      container.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--muted);">Sélectionnez un département pour voir son évolution</p>';
+      return;
+    }
+
+    currentChart = Plot.plot({
+      width: 900,
+      height: 400,
+      marginLeft: 60,
+      marginBottom: 50,
+      x: {
+        label: "Année",
+        tickFormat: d => String(d)
+      },
+      y: {
+        label: "APL MG (médiane)",
+        grid: true
+      },
+      color: {
+        legend: true
+      },
+      marks: [
+        // Moyenne France
+        Plot.line(franceMoyenne, {
+          x: "annee",
+          y: "apl_median",
+          stroke: "#94a3b8",
+          strokeWidth: 2,
+          strokeDasharray: "5,5",
+          marker: "dot"
+        }),
+        Plot.text(franceMoyenne, {
+          x: "annee",
+          y: "apl_median",
+          text: d => `${d.apl_median.toFixed(2)}`,
+          dy: -10,
+          fill: "#64748b",
+          fontSize: 11
+        }),
+        // Département sélectionné
+        ...(deptData.length > 0 ? [
+          Plot.line(deptData, {
+            x: "annee",
+            y: "apl_median",
+            stroke: "#3b82f6",
+            strokeWidth: 3,
+            marker: "dot"
+          }),
+          Plot.text(deptData, {
+            x: "annee",
+            y: "apl_median",
+            text: d => `${d.apl_median.toFixed(2)}`,
+            dy: -10,
+            fill: "#1e40af",
+            fontSize: 12,
+            fontWeight: "bold"
+          })
+        ] : [])
+      ]
+    });
+
+    container.innerHTML = '';
+    container.appendChild(currentChart);
+  }
+
+  // Écouter les changements de sélection
+  const select = document.getElementById('dept-select');
+  if (select) {
+    select.addEventListener('change', (e) => {
+      updateChart(e.target.value);
+    });
+  }
+
+  // Affichage initial
+  updateChart(null);
+</script>
